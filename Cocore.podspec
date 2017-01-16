@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -159,7 +159,7 @@ Pod::Spec.new do |s|
   
   # State machine (own GitHub fork with updates)
   #   > Cocore/StateMachine
-  s.dependency 'SwiftState', :git => 'git@github.com:dmitryshashlov/SwiftState.git'
+  # TODO: s.dependency 'SwiftState', :git => 'git@github.com:dmitryshashlov/SwiftState.git'
   
   # Used in TaskListController.swift
   #   > Cocore/CustomSegmentedControl
@@ -171,7 +171,7 @@ Pod::Spec.new do |s|
   
   # Modal onscreen progress notifier 
   #   > Cocore/ProgressNotifier
-  s.dependency 'ARSLineProgress', :git => 'git@github.com:dmitryshashlov/ARSLineProgress.git', :tag => 'custom'
+  # TODO: s.dependency 'ARSLineProgress', :git => 'git@github.com:dmitryshashlov/ARSLineProgress.git', :tag => 'custom'
   
   # Used in StatusBarNotifier.swift
   #   > Cocore/StatusBarNotifier
@@ -184,7 +184,7 @@ Pod::Spec.new do |s|
   # Logging
   #   > Cocore/Logging
   s.dependency 'CocoaLumberjack/Swift'
-  s.dependency 'PaperTrailLumberjack', :git => 'git@github.com:dmitryshashlov/papertrail-lumberjack-ios.git'
+  # TODO: s.dependency 'PaperTrailLumberjack', :git => 'git@github.com:dmitryshashlov/papertrail-lumberjack-ios.git'
   s.dependency 'CocoaAsyncSocket', '7.4.3'
   
   # Used for TwitterAuthorization
