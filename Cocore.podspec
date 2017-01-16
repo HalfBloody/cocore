@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -136,5 +136,67 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+
+  # Main application core
+  #   > Cocore
+  
+  s.dependency 'Alamofire', '3.1.4'
+  s.dependency 'RealmSwift', '0.98.6'
+  s.dependency 'ReactiveCocoa', '4.0.4-alpha-4'
+  s.dependency 'ObjectMapper', '1.1.1'
+  s.dependency 'AlamofireObjectMapper', '2.1.0'
+  
+  s.dependency 'Fabric'
+  s.dependency 'Crashlytics'
+  s.dependency 'Reachability'
+  s.dependency 'DeepLinkKit'
+  s.dependency 'OneSignal', '1.13.3'
+  s.dependency 'Helpshift', '5.8.0'
+  s.dependency 'UXCam'
+  
+  # Sentry client
+  s.dependency 'Raven'
+  
+  # State machine (own GitHub fork with updates)
+  #   > Cocore/StateMachine
+  s.dependency 'SwiftState', :git => 'git@github.com:dmitryshashlov/SwiftState.git'
+  
+  # Used in TaskListController.swift
+  #   > Cocore/CustomSegmentedControl
+  # pod 'NPSegmentedControl'
+  
+  # Used in TaskService.swift and LocalTaskPerformController.swift
+  #   > Cocore/CloudStore/Cloudinary
+  # pod 'Cloudinary'
+  
+  # Modal onscreen progress notifier 
+  #   > Cocore/ProgressNotifier
+  s.dependency 'ARSLineProgress', :git => 'git@github.com:dmitryshashlov/ARSLineProgress.git', :tag => 'custom'
+  
+  # Used in StatusBarNotifier.swift
+  #   > Cocore/StatusBarNotifier
+  s.dependency 'JDStatusBarNotification'
+  
+  # Used in StrintUtils.swift for rendering HTML inside UILabel
+  #   > Cocore/HTMLUtils
+  s.dependency 'TTTAttributedLabel'
+  
+  # Logging
+  #   > Cocore/Logging
+  s.dependency 'CocoaLumberjack/Swift'
+  s.dependency 'PaperTrailLumberjack', :git => 'git@github.com:dmitryshashlov/papertrail-lumberjack-ios.git'
+  s.dependency 'CocoaAsyncSocket', '7.4.3'
+  
+  # Used for TwitterAuthorization
+  #   > Cocore/OAuth
+  # pod 'OAuthSwift', '0.6.0'
+  # pod 'OAuthSwift-Alamofire', :git => 'git@github.com:OAuthSwift/OAuthSwift-Alamofire.git', :tag => '0.0.2'
+  
+  # Used in ViewModels
+  #   > Cocore/TimeUtils
+  # pod 'DateTools'
+  
+  # Used for NSTimer.after(..) calls, mostly for navigation
+  s.dependency 'SwiftyTimer', '1.4.1'
 
 end
