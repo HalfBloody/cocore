@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+  This is a description for Cocore
                    DESC
 
   s.homepage     = "https://bitbucket.org/shashlov/cocore"
