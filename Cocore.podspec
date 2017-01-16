@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -146,13 +146,13 @@ Pod::Spec.new do |s|
   s.dependency 'ObjectMapper', '1.1.1'
   s.dependency 'AlamofireObjectMapper', '2.1.0'
   
-  s.dependency 'Fabric'
-  s.dependency 'Crashlytics'
+  # TODO: s.dependency 'Fabric'
+  # TODO: s.dependency 'Crashlytics'
   s.dependency 'Reachability'
   s.dependency 'DeepLinkKit'
-  s.dependency 'OneSignal', '1.13.3'
+  # TODO: s.dependency 'OneSignal', '1.13.3'
   s.dependency 'Helpshift', '5.8.0'
-  s.dependency 'UXCam'
+  # TODO: s.dependency 'UXCam'
   
   # Sentry client
   s.dependency 'Raven'
