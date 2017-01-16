@@ -32,12 +32,14 @@ extension RavenClient {
         var extra = [String: AnyObject]()
         
         // Current user's IDFA
+        /* TODO: dependency injection
         if let currentUser = UserModel.currentUser {
             extra["user_id"] = currentUser.id
             extra["user_idfa"] = currentUser.idfa
             extra["user_credits"] = currentUser.credits
         }
-        
+         */
+
         // Append extra fro arguments
         if let data = data {
             for (key, value) in data {

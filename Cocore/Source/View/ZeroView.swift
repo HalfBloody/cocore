@@ -99,9 +99,7 @@ class ZeroView : ModelConfigurableView {
     }
     
     override func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
-        if let _ = viewModel.model as? Reward {
-            // Nothing
-        }
+        // Nothing here
     }
     
     // Multiline labels

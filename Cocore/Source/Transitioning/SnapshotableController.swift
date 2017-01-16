@@ -36,9 +36,11 @@ extension UIViewController: SnapshotableController {
             // Render controller's view
             if let nc = self as? UINavigationController {
                 nc.viewControllers.first?.view.layoutIfNeeded()
+                /* TODO: dependency injection
                 if let tlc = nc.viewControllers.first as? TaskListController {
                     tlc.taskCategorySegmentedControl?.selectCell(tlc.taskCategorySegmentedControl?.selectedIndex() ?? 0, animate: false)
                 }
+                 */
                 view.layer.renderInContext(context)
             } else if let navigationController = navigationController {
                 navigationController.view.layer.renderInContext(context)

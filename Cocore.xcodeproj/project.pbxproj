@@ -90,6 +90,9 @@
 		B67A36801E2CAC540052549B /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36301E2CAC540052549B /* AlertViewModel.swift */; };
 		B67A36811E2CAC540052549B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36311E2CAC540052549B /* ViewModel.swift */; };
 		B67A36821E2CAC540052549B /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36321E2CAC540052549B /* ViewModelConfigurable.swift */; };
+		B67A36861E2CBEC70052549B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36841E2CBEC70052549B /* Colors.swift */; };
+		B67A36871E2CBEC70052549B /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36851E2CBEC70052549B /* FontSizes.swift */; };
+		B67A368B1E2CBF7F0052549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A368A1E2CBF7F0052549B /* AppDelegate.swift */; };
 		BFD3ACCBF3E670B12263272B /* Pods_Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1426EAC7DD532A19ED91D0F4 /* Pods_Cocore.framework */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +196,9 @@
 		B67A36301E2CAC540052549B /* AlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		B67A36311E2CAC540052549B /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B67A36321E2CAC540052549B /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
+		B67A36841E2CBEC70052549B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B67A36851E2CBEC70052549B /* FontSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
+		B67A368A1E2CBF7F0052549B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate/AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +261,8 @@
 		B67A35131E2C82240052549B /* Cocore */ = {
 			isa = PBXGroup;
 			children = (
+				B67A36891E2CBF740052549B /* AppDelegate */,
+				B67A36831E2CBEC70052549B /* Style */,
 				B67A35D81E2CAC540052549B /* DataSource */,
 				B67A35DC1E2CAC540052549B /* Decorator */,
 				B67A35E11E2CAC540052549B /* Model */,
@@ -449,6 +457,24 @@
 			path = Source/ViewModel;
 			sourceTree = "<group>";
 		};
+		B67A36831E2CBEC70052549B /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				B67A36841E2CBEC70052549B /* Colors.swift */,
+				B67A36851E2CBEC70052549B /* FontSizes.swift */,
+			);
+			name = Style;
+			path = Source/Style;
+			sourceTree = "<group>";
+		};
+		B67A36891E2CBF740052549B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B67A368A1E2CBF7F0052549B /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -597,6 +623,7 @@
 				B67A36791E2CAC540052549B /* BlurredAlertController.swift in Sources */,
 				B67A365C1E2CAC540052549B /* Transport.swift in Sources */,
 				B67A36451E2CAC540052549B /* InterfaceController.swift in Sources */,
+				B67A368B1E2CBF7F0052549B /* AppDelegate.swift in Sources */,
 				B67A36711E2CAC540052549B /* FacebookButton.swift in Sources */,
 				B67A366A1E2CAC540052549B /* StatusBarNotifier.swift in Sources */,
 				B67A36511E2CAC540052549B /* StateMachineConductor+Operation.swift in Sources */,
@@ -656,6 +683,7 @@
 				B67A363E1E2CAC540052549B /* ConfigurableModelViewDataSource.swift in Sources */,
 				B67A36441E2CAC540052549B /* DisposableUtils.swift in Sources */,
 				B67A36391E2CAC540052549B /* PanelDecorator.swift in Sources */,
+				B67A36861E2CBEC70052549B /* Colors.swift in Sources */,
 				B67A36811E2CAC540052549B /* ViewModel.swift in Sources */,
 				B67A363C1E2CAC540052549B /* ListTransform.swift in Sources */,
 				B67A36581E2CAC540052549B /* HTTPEndpoint.swift in Sources */,
@@ -668,6 +696,7 @@
 				B67A365F1E2CAC540052549B /* FadeTransitioning.swift in Sources */,
 				B67A36721E2CAC540052549B /* GrayButton.swift in Sources */,
 				B67A36491E2CAC540052549B /* OperatableState.swift in Sources */,
+				B67A36871E2CBEC70052549B /* FontSizes.swift in Sources */,
 				B67A36521E2CAC540052549B /* StateMachineConductor.swift in Sources */,
 				B67A365A1E2CAC540052549B /* Message.swift in Sources */,
 				B67A36431E2CAC540052549B /* CustomNavigationController.swift in Sources */,
