@@ -9,7 +9,6 @@
 import Foundation
 import CocoaLumberjack
 import PaperTrailLumberjack
-import Crashlytics
 import Raven
 import SwiftState
 
@@ -117,17 +116,6 @@ extension DDLogLevel : CustomStringConvertible {
             case .Debug: return "Debug"
             default: return ""
         }
-    }
-}
-
-// MARK: Crashlytics logger
-
-class CrashlyticsLogger : DDAbstractLogger {
-    override func logMessage(logMessage: DDLogMessage!) {
-        CLSLogv("%@ %@ %@", getVaList([
-            logMessage.level.description.uppercaseString,
-            LogContext(rawValue: logMessage.context)!.description,
-            logMessage.message]))
     }
 }
 

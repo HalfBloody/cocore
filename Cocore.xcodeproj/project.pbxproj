@@ -93,6 +93,7 @@
 		B67A36861E2CBEC70052549B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36841E2CBEC70052549B /* Colors.swift */; };
 		B67A36871E2CBEC70052549B /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36851E2CBEC70052549B /* FontSizes.swift */; };
 		B67A368B1E2CBF7F0052549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A368A1E2CBF7F0052549B /* AppDelegate.swift */; };
+		B67A36921E2DC7B30052549B /* Logger+Crashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36911E2DC7B30052549B /* Logger+Crashlytics.swift */; };
 		BFD3ACCBF3E670B12263272B /* Pods_Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1426EAC7DD532A19ED91D0F4 /* Pods_Cocore.framework */; };
 /* End PBXBuildFile section */
 
@@ -199,6 +200,7 @@
 		B67A36841E2CBEC70052549B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B67A36851E2CBEC70052549B /* FontSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
 		B67A368A1E2CBF7F0052549B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate/AppDelegate.swift; sourceTree = "<group>"; };
+		B67A36911E2DC7B30052549B /* Logger+Crashlytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Logger+Crashlytics.swift"; path = "Source/Crashlytics/Logger+Crashlytics.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 		B67A35131E2C82240052549B /* Cocore */ = {
 			isa = PBXGroup;
 			children = (
+				B67A36901E2DC7A20052549B /* Crashlytics */,
 				B67A36891E2CBF740052549B /* AppDelegate */,
 				B67A36831E2CBEC70052549B /* Style */,
 				B67A35D81E2CAC540052549B /* DataSource */,
@@ -473,6 +476,14 @@
 				B67A368A1E2CBF7F0052549B /* AppDelegate.swift */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		B67A36901E2DC7A20052549B /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				B67A36911E2DC7B30052549B /* Logger+Crashlytics.swift */,
+			);
+			name = Crashlytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -693,6 +704,7 @@
 				B67A36611E2CAC540052549B /* PushFadeAnimator.swift in Sources */,
 				B67A36801E2CAC540052549B /* AlertViewModel.swift in Sources */,
 				B67A36461E2CAC540052549B /* LazyStateMachineConductor.swift in Sources */,
+				B67A36921E2DC7B30052549B /* Logger+Crashlytics.swift in Sources */,
 				B67A365F1E2CAC540052549B /* FadeTransitioning.swift in Sources */,
 				B67A36721E2CAC540052549B /* GrayButton.swift in Sources */,
 				B67A36491E2CAC540052549B /* OperatableState.swift in Sources */,

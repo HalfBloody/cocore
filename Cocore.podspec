@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -93,8 +93,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Cocore/**/*.{swift}"
-  # s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Cocore/Source/**/*.{swift}"
+  # s.exclude_files = "Cocore/Source/Crashlytics/*.{swift}" # TODO
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -119,8 +119,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.framework  = "UIKit"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
@@ -136,6 +135,11 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+
+  s.vendored_frameworks = "Cocore/Vendor/Crashlytics.framework"
+  s.preserve_paths = 'Cocore/Vendor/*.framework'
+  s.resource = 'Cocore/Vendor/Crashlytics.framework'
+  s.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor"' }
 
   # Main application core
   #   > Cocore
@@ -159,7 +163,7 @@ Pod::Spec.new do |s|
   
   # State machine (own GitHub fork with updates)
   #   > Cocore/StateMachine
-  # TODO: s.dependency 'SwiftState', :git => 'git@github.com:dmitryshashlov/SwiftState.git'
+  s.dependency 'SwiftState', '4.1.1'
   
   # Used in TaskListController.swift
   #   > Cocore/CustomSegmentedControl
@@ -175,7 +179,7 @@ Pod::Spec.new do |s|
   
   # Used in StatusBarNotifier.swift
   #   > Cocore/StatusBarNotifier
-  s.dependency 'JDStatusBarNotification'
+  s.dependency 'JDStatusBarNotification', '1.5.4'
   
   # Used in StrintUtils.swift for rendering HTML inside UILabel
   #   > Cocore/HTMLUtils
@@ -183,8 +187,8 @@ Pod::Spec.new do |s|
   
   # Logging
   #   > Cocore/Logging
-  s.dependency 'CocoaLumberjack/Swift'
-  # TODO: s.dependency 'PaperTrailLumberjack', :git => 'git@github.com:dmitryshashlov/papertrail-lumberjack-ios.git'
+  s.dependency 'CocoaLumberjack/Swift', '~> 2.2.0'
+  s.dependency 'PaperTrailLumberjack', '2.0.3'
   s.dependency 'CocoaAsyncSocket', '7.4.3'
   
   # Used for TwitterAuthorization
