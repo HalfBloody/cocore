@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -136,9 +136,9 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
-  s.vendored_frameworks = "Cocore/Vendor/Crashlytics.framework"
+  s.vendored_frameworks = "Cocore/Vendor/Crashlytics.framework", "Cocore/Vendor/Fabric.framework", "Cocore/Vendor/OneSignal.framework", "Cocore/Vendor/UXCam.framework"
   s.preserve_paths = 'Cocore/Vendor/*.framework'
-  s.resource = 'Cocore/Vendor/Crashlytics.framework'
+  s.resource = "Cocore/Vendor/Crashlytics.framework", "Cocore/Vendor/Fabric.framework", "Cocore/Vendor/OneSignal.framework", "Cocore/Vendor/UXCam.framework"
   s.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor"' }
 
   # Main application core
@@ -150,13 +150,9 @@ Pod::Spec.new do |s|
   s.dependency 'ObjectMapper', '1.1.1'
   s.dependency 'AlamofireObjectMapper', '2.1.0'
   
-  # TODO: s.dependency 'Fabric'
-  # TODO: s.dependency 'Crashlytics'
   s.dependency 'Reachability'
   s.dependency 'DeepLinkKit'
-  # TODO: s.dependency 'OneSignal', '1.13.3'
   s.dependency 'Helpshift', '5.8.0'
-  # TODO: s.dependency 'UXCam'
   
   # Sentry client
   s.dependency 'Raven'
@@ -175,7 +171,7 @@ Pod::Spec.new do |s|
   
   # Modal onscreen progress notifier 
   #   > Cocore/ProgressNotifier
-  # TODO: s.dependency 'ARSLineProgress', :git => 'git@github.com:dmitryshashlov/ARSLineProgress.git', :tag => 'custom'
+  s.dependency 'ARSLineProgress', '1.2.2'
   
   # Used in StatusBarNotifier.swift
   #   > Cocore/StatusBarNotifier
