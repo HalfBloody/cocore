@@ -8,6 +8,7 @@
 
 import Foundation
 import Crashlytics
+import CocoaLumberjack
 
 // MARK: Crashlytics logger
 
