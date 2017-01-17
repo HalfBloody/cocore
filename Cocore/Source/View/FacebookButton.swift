@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class FacebookButton : UIButton {
+public class FacebookButton : UIButton {
     
     var originalImage: UIImage?
             
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Don't adjust image when highlighted
@@ -35,7 +35,7 @@ class FacebookButton : UIButton {
         enabled = true
     }
     
-    dynamic var showShadow: Bool = true {
+    dynamic public var showShadow: Bool = true {
         didSet {
             if showShadow {
                 layer.shadowRadius = 8.0
@@ -52,14 +52,14 @@ class FacebookButton : UIButton {
     
     // MARK: 
  
-    override var highlighted: Bool {
+    override public var highlighted: Bool {
         didSet {
             backgroundColor = highlighted ? UIColor(rgb: 0x374e7e, alphaVal: 1.0) : UIColor(rgb: 0x4866a4, alphaVal: 1.0)
             showShadow = !highlighted
         }
     }    
     
-    override var enabled: Bool {
+    override public var enabled: Bool {
         didSet {
             showShadow = enabled
             backgroundColor = enabled ? UIColor(rgb: 0x4866a4, alphaVal: 1.0) : UIColor(rgb: 0xbed5e4, alphaVal: 1.0)

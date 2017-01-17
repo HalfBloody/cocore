@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 import ReactiveCocoa
 
-protocol FormField: AnyObject {    
+public protocol FormField: AnyObject {
     var control: UIControl? { get }
 
     // Value
@@ -34,18 +34,18 @@ func ==(lhs: FormField, rhs: FormField) -> Bool {
 
 ////
 
-protocol FormFieldHeader: AnyObject {
+public protocol FormFieldHeader: AnyObject {
     func setName(name: String)
     func setBoldName(name: String)
     func setImage(image: UIImage)
 }
 
-class CustomTextField : UITextField {
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
+public class CustomTextField : UITextField {
+    override public func textRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 10)
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+    override public func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 10)
     }
 }
@@ -117,19 +117,19 @@ class SinglelineFormFieldView : ModelConfigurableView, FormField, FormFieldHeade
 
 ////
 
-class FormFieldHeaderView : ModelConfigurableView, FormFieldHeader {
+public class FormFieldHeaderView : ModelConfigurableView, FormFieldHeader {
     @IBOutlet var nameLabel: UILabel?  
     @IBOutlet var boldNameLabel: UILabel?  
     @IBOutlet var imageView: UIImageView?
     
     // FormFieldHeader
-    func setName(name: String) { nameLabel?.text = name }
-    func setBoldName(name: String) { boldNameLabel?.text = name }
-    func setImage(image: UIImage) { imageView?.image = image }
+    public func setName(name: String) { nameLabel?.text = name }
+    public func setBoldName(name: String) { boldNameLabel?.text = name }
+    public func setImage(image: UIImage) { imageView?.image = image }
     
     // Configuration
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -152,7 +152,7 @@ class FormFieldHeaderView : ModelConfigurableView, FormFieldHeader {
         */
     }
     
-    override func multilineLabels() -> [UILabel?] {
+    override public func multilineLabels() -> [UILabel?] {
         return [
             // nameLabel,
             boldNameLabel
@@ -162,8 +162,8 @@ class FormFieldHeaderView : ModelConfigurableView, FormFieldHeader {
 
 ////
 
-enum FieldType {
-    typealias LimitConfigurator = (String) -> (Bool)
+public enum FieldType {
+    public typealias LimitConfigurator = (String) -> (Bool)
     case SinglelineStringInput(placeholder: String, keyboardType: UIKeyboardType, capitalizationType: UITextAutocapitalizationType, correctionType: UITextAutocorrectionType, limitConfigurator: LimitConfigurator?)
     case SinglelineStringInputCompact(image: UIImage?, name: String, placeholder: String, keyboardType: UIKeyboardType, capitalizationType: UITextAutocapitalizationType, correctionType: UITextAutocorrectionType, limitConfigurator: LimitConfigurator)
     case MultilineStringInput(placeholder: String, numberOfLines: Int, keyboardType: UIKeyboardType, capitalizationType: UITextAutocapitalizationType, correctionType: UITextAutocorrectionType, limitConfigurator: LimitConfigurator)
@@ -190,7 +190,7 @@ enum FieldType {
 
 ////
 
-enum FieldHeaderType {
+public enum FieldHeaderType {
     case Padding
     case Title(String)
     case BoldTitle(String)
@@ -208,26 +208,33 @@ enum FieldHeaderType {
 
 ////
 
-protocol FieldConfigurable {
+public protocol FieldConfigurable {
     associatedtype ModelType
     associatedtype ValueType
     func extractValue(model: ModelType) -> ValueType?
     func setupValue(value: ValueType, model: ModelType)
 }
 
-struct FieldConfiguration<M: AnyObject, T> : FieldConfigurable {
-    let type: FieldType
-    var headerType: FieldHeaderType?
-    var extract: ((M) -> T)?
-    var setup: ((T, M) -> ())?
+public struct FieldConfiguration<M: AnyObject, T> : FieldConfigurable {
+    public let type: FieldType
+    public var headerType: FieldHeaderType?
+    public var extract: ((M) -> T)?
+    public var setup: ((T, M) -> ())?
+
+    public init(type: FieldType, headerType: FieldHeaderType?, extract: ((M) -> T)?, setup: ((T, M) -> ())?) {
+        self.type = type
+        self.headerType = headerType
+        self.extract = extract
+        self.setup = setup
+    }
 }
 
 extension FieldConfiguration where M: AnyObject {
-    func extractValue(model: M) -> T? {
+    public func extractValue(model: M) -> T? {
         return extract?(model)
     }
     
-    func setupValue(value: T, model: M) { 
+    public func setupValue(value: T, model: M) { 
         try! (try! Realm()).write { 
             setup?(value, model) 
         }
@@ -245,20 +252,20 @@ extension FieldConfiguration where M: Object {
 }
 */
 
-enum FieldConfigurationError: ErrorType {
+public enum FieldConfigurationError: ErrorType {
     case WrongHeaderIdentifier(String)
     case WrongFieldIdentifier(String)
 }
 
 ////
 
-class FormFieldViewDataSource<M: Object> : ConfigurableModelViewDataSource<ModelConfigurableView> {
+public class FormFieldViewDataSource<M: Object> : ConfigurableModelViewDataSource<ModelConfigurableView> {
     
     lazy var fieldsConfigurations = [ NSIndexPath : FieldConfiguration<M, AnyObject> ]()
     lazy var fieldHeaders = [ NSIndexPath : FormFieldHeader ]()
     lazy var fieldViews = [ NSIndexPath : FormField ]()
     
-    init(_ fields: [ FieldConfiguration<M, AnyObject> ]) throws {        
+    public init(_ fields: [ FieldConfiguration<M, AnyObject> ]) throws {
         super.init()
         
         var index = 0
@@ -298,7 +305,7 @@ class FormFieldViewDataSource<M: Object> : ConfigurableModelViewDataSource<Model
     }
 }
 
-enum ServiceTransportError : ErrorType {
+public enum ServiceTransportError : ErrorType {
     case EmptyResponse
     case ServerError(error: NSError, response: NSHTTPURLResponse?, details: String?)
     
@@ -311,15 +318,15 @@ enum ServiceTransportError : ErrorType {
     }
 }
 
-enum FormError : ErrorType {
+public enum FormError : ErrorType {
     case TransportError(ServiceTransportError, [NSIndexPath])
 }
 
-protocol FormControllerDelegate {
+public protocol FormControllerDelegate {
     func formChanged()
 }
 
-class FormController<M: Object> : TableViewAbstractModelController, FormControllerDelegate {
+public class FormController<M: Object> : TableViewAbstractModelController, FormControllerDelegate {
     
     var cellHeightCache = [NSIndexPath: CGFloat]()
     
@@ -337,9 +344,9 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     // Limit configurators
     var limitConfigurators = Dictionary<NSIndexPath, FieldType.LimitConfigurator>()
 
-    var originalTableInset: UIEdgeInsets?
+    public var originalTableInset: UIEdgeInsets?
     
-    init(model: M, fields: [ FieldConfiguration<M, AnyObject> ], nibName: String?) {
+    public init(model: M, fields: [ FieldConfiguration<M, AnyObject> ], nibName: String?) {
         
         // Create form fields
         formViewModelDataSource = try! FormFieldViewDataSource(fields)
@@ -458,7 +465,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
         
     // View
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         // Obser keyboard notifications
@@ -466,7 +473,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override public func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Remove keyboard notification observation
@@ -476,7 +483,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // MARK: FormControllerDelegate
     
-    func formChanged() {
+    public func formChanged() {
         // Setup "Save" navigation item
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(FormController.save(_:)))        
     }
@@ -606,7 +613,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // MARK: Confirm model changes
     
-    func mergeModelChanges() {
+    public func mergeModelChanges() {
         for (indexPath, configuration) in formViewModelDataSource.fieldsConfigurations {
             
             let originalModel = originalModelForIndexPath(indexPath)            
@@ -620,7 +627,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
         
     // MARK: Resign responders
     
-    func resignAllFormFields() {
+    public func resignAllFormFields() {
         for (_, fieldView) in self.formViewModelDataSource.fieldViews {
             if let fieldViewResponder = fieldView as? UIResponder {
                 fieldViewResponder.resignFirstResponder()
@@ -628,7 +635,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
         }
     }
     
-    func anyFieldIsResponding() -> Bool {
+    public func anyFieldIsResponding() -> Bool {
         var result = false
         for (_, fieldView) in self.formViewModelDataSource.fieldViews {
             if let fieldViewResponder = fieldView as? SinglelineFormFieldView {
@@ -677,7 +684,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // Decoration
     
-    override func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {        
+    override public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {        
         switch (self.formViewModelDataSource.fieldHeaders[indexPath], self.formViewModelDataSource.fieldViews[indexPath]) {
             case (.Some(_), .None):
                 return BasicDecorator(decoratedViewBackgroundColor: Colors.formBackground, contentViewBackgroundColor: Colors.clear)
@@ -690,7 +697,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // Table view
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {        
+    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {        
         switch (self.formViewModelDataSource.fieldsConfigurations[indexPath]?.type) {
             case .Some(.Selection(_, _)):
                 cell.selectionStyle = .Default
@@ -716,14 +723,14 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // Keyboard notifications
     
-    func keyboardWillShow(notification: NSNotification) {
+    public func keyboardWillShow(notification: NSNotification) {
         originalTableInset = tableView?.contentInset
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             tableView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    public func keyboardWillHide(notification: NSNotification) {
         if let originalInset = originalTableInset {
             tableView?.contentInset = originalInset
         }        
@@ -731,7 +738,7 @@ class FormController<M: Object> : TableViewAbstractModelController, FormControll
     
     // MARK: TableView
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if case let viewDataSource = modelViewDataSourceForIndexPath(indexPath) as? ReusableModelViewDataSource,
             let _ = viewDataSource?.heightChange(indexPath) {

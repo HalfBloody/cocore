@@ -12,7 +12,7 @@ import SwiftState
 
 extension OperatableState where S: StateTypeComparable, S.SType == S {
     
-    static func _modestComparator() -> (OperatableState<S>, OperatableState<S>) -> Bool {
+    public static func _modestComparator() -> (OperatableState<S>, OperatableState<S>) -> Bool {
         return {
             left, right in
             
@@ -29,7 +29,7 @@ extension OperatableState where S: StateTypeComparable, S.SType == S {
         }
     }
     
-    static func _greedyComparator() -> (OperatableState<S>, OperatableState<S>) -> Bool {
+    public static func _greedyComparator() -> (OperatableState<S>, OperatableState<S>) -> Bool {
         return {
             left, right in
             

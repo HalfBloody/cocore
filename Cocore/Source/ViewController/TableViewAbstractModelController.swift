@@ -9,25 +9,25 @@
 import Foundation
 import UIKit
 
-struct TableSection<T: TableModelDataSource> {
-    let section: Int
+public struct TableSection<T: TableModelDataSource> {
+    public let section: Int
 }
 
-class TableViewAbstractModelController : UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+public class TableViewAbstractModelController : UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     private var viewIdentifiers = [String]()
-    @IBOutlet var tableView: UITableView?
+    @IBOutlet public var tableView: UITableView?
 
     // Zero view
     var zeroView: ZeroView?
     
     // Zero label
-    var zeroTitle: String = "No data" { 
+    public var zeroTitle: String = "No data" {
         didSet {
             zeroLabel?.text = zeroTitle
         }
     }
-    var zeroHidden: Bool = true {
+    public var zeroHidden: Bool = true {
         didSet {
             zeroLabel?.hidden = zeroHidden
             adjustZeroLabel(self.tableView!)
@@ -42,13 +42,13 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
     private var modelViewDataSources = [ ModelViewDataSource ]()
         
     // Designated initializer
-    init(nibName: String?) {
+    public init(nibName: String?) {
         super.init(nibName: nibName, bundle: nil)        
     }
     
     ///
     
-    func addDataSource<T: TableModelDataSource where T.ModelType: AnyObject>(modelDataSource: T, modelViewDataSource: ModelViewDataSource) -> TableSection<T> {
+    public func addDataSource<T: TableModelDataSource where T.ModelType: AnyObject>(modelDataSource: T, modelViewDataSource: ModelViewDataSource) -> TableSection<T> {
         
         // Add model provider to array
         modelDataSources.append(modelDataSource as! AnyObject)
@@ -63,23 +63,23 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         return TableSection(section: modelDataSources.count - 1)
     }
     
-    func modelDataSourceForSection<T: TableModelDataSource>(tableSection: TableSection<T>) -> T {
+    public func modelDataSourceForSection<T: TableModelDataSource>(tableSection: TableSection<T>) -> T {
         return modelDataSources[tableSection.section] as! T
     }
     
-    func modelDataSourceThunkForSection(section: Int) -> TableModelDataSourceThunk {
+    public func modelDataSourceThunkForSection(section: Int) -> TableModelDataSourceThunk {
         return modelDataSourceThunks[section]
     }
     
     //
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // View
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()  
         
         // Setup table view
@@ -107,7 +107,7 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
     
     // View identifiers registration
     
-    func setupReusableIdentifiers<T: TableModelDataSource>(modelDataSource: T) {
+    public func setupReusableIdentifiers<T: TableModelDataSource>(modelDataSource: T) {
         switch modelDataSource {
             case let collectionModelDataSource as CollectionTableModelDataSource<T.ModelType>:
                 viewIdentifiers.append(collectionModelDataSource.viewIdentifier)
@@ -119,7 +119,7 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         }
     }
     
-    func registerReusableIdentifiers() {
+    public func registerReusableIdentifiers() {
         for viewIdentifier in viewIdentifiers {
             tableView?.registerClass(DecoratedTableViewCell.self, forCellReuseIdentifier: viewIdentifier)
         }
@@ -127,15 +127,15 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
     
     // UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return modelDataSourceThunkForSection(section).totalNumberOfRows()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return modelDataSources.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // Dequeue cell
         let viewIdentifier = viewIdentifierForIndexPath(indexPath)
@@ -153,7 +153,7 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         return decoratedCell
     } 
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         switch (cell, modelViewDataSourceForIndexPath(indexPath)) {
             
@@ -168,7 +168,7 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         cell.selectionStyle = .None
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
         var totalHeight: CGFloat!
         
@@ -215,32 +215,32 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
     
     // 
     
-    func anyModelForIndexPath(indexPath: NSIndexPath) -> AnyObject {
+    public func anyModelForIndexPath(indexPath: NSIndexPath) -> AnyObject {
         return modelDataSourceThunkForSection(indexPath.section).modelForIndex(indexPath.row)
     }
         
-    func modelForIndexPath<T: TableModelDataSource>(indexPath: NSIndexPath, tableSection: TableSection<T>) -> T.ModelType {
+    public func modelForIndexPath<T: TableModelDataSource>(indexPath: NSIndexPath, tableSection: TableSection<T>) -> T.ModelType {
         return modelDataSourceForSection(tableSection).modelForIndex(indexPath.row)
     }
     
-    func viewIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
+    public func viewIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
         return modelDataSourceThunkForSection(indexPath.section).viewIdentifierForIndex(indexPath.row)
     }
     
     //
     
-    func configureCellWithViewModelConfigurable(containerTableViewCell: DecoratedTableViewCell, modelConfigurableView: ModelConfigurableView, decorator: Decorator) {        
+    public func configureCellWithViewModelConfigurable(containerTableViewCell: DecoratedTableViewCell, modelConfigurableView: ModelConfigurableView, decorator: Decorator) {
         // Add model configurable view as cell's contentView subview
         containerTableViewCell.setupDecoratedView(modelConfigurableView, decorator: decorator)
     }
     
     //
     
-    func viewModelConfigurableForIndexPath(indexPath: NSIndexPath) -> ModelConfigurableView {
+    public func viewModelConfigurableForIndexPath(indexPath: NSIndexPath) -> ModelConfigurableView {
         return modelViewDataSourceForIndexPath(indexPath).viewModelConfigurableForViewIdentifier(viewIdentifierForIndexPath(indexPath), indexPath: indexPath)
     }
     
-    func setupViewModelConfigurableForIndexPath(modelConfigurableView: ModelConfigurableView, indexPath: NSIndexPath) -> ModelConfigurableView {
+    public func setupViewModelConfigurableForIndexPath(modelConfigurableView: ModelConfigurableView, indexPath: NSIndexPath) -> ModelConfigurableView {
         
         // Model view data source
         let modelViewDataSource = modelViewDataSourceForIndexPath(indexPath)
@@ -292,11 +292,11 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         return modelConfigurableView
     }
     
-    func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
+    public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
         return BasicDecorator()
     }
     
-    func modelViewDataSourceForIndexPath(indexPath: NSIndexPath) -> ModelViewDataSource {
+    public func modelViewDataSourceForIndexPath(indexPath: NSIndexPath) -> ModelViewDataSource {
         return modelViewDataSources[indexPath.section]
     }
     
@@ -306,7 +306,7 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
         return 0.0
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         adjustZeroLabel(scrollView)
     }
     
@@ -331,11 +331,11 @@ class TableViewAbstractModelController : UIViewController, UITableViewDataSource
 // Private extension to handle table view reloads
 extension TableViewAbstractModelController {
     
-    private func totalIndexPathsForSection<T: TableModelDataSource>(tableSection: TableSection<T>) -> [NSIndexPath] {
+    public func totalIndexPathsForSection<T: TableModelDataSource>(tableSection: TableSection<T>) -> [NSIndexPath] {
         return (0..<modelDataSourceForSection(tableSection).totalNumberOfRows()).map { NSIndexPath(forRow: $0, inSection: tableSection.section) }
     }
     
-    private func updateTableView<T: TableModelDataSource>(
+    public func updateTableView<T: TableModelDataSource>(
         tableSection: TableSection<T>,
         beforeCount: Int,
         afterCount: Int,
@@ -394,7 +394,7 @@ extension TableViewAbstractModelController {
 extension TableViewAbstractModelController {
     
     // Returns true if every model is the same in the same order, otherwise false
-    private func assignCollectionModels<M: Equatable>(tableSection: TableSection<CollectionTableModelDataSource<M>>, models: [M]) -> [NSIndexPath]? {
+    public func assignCollectionModels<M: Equatable>(tableSection: TableSection<CollectionTableModelDataSource<M>>, models: [M]) -> [NSIndexPath]? {
         
         let collectionDataSource = modelDataSourceForSection(tableSection)
         
@@ -419,7 +419,7 @@ extension TableViewAbstractModelController {
     }
     
     // Assign models and perform animations
-    func assignModels<M: Equatable>(
+    public func assignModels<M: Equatable>(
         tableSection: TableSection<CollectionTableModelDataSource<M>>,
         models: [M],
         cellAnimationType: UITableViewRowAnimation = .Fade,
@@ -439,7 +439,7 @@ extension TableViewAbstractModelController {
         }
     }
     
-    func assignCollectionIdentifier<T: TableModelDataSource>(tableSection: TableSection<T>, identifier: String) {
+    public func assignCollectionIdentifier<T: TableModelDataSource>(tableSection: TableSection<T>, identifier: String) {
         if let buttonsDataSource = modelDataSourceForSection(tableSection) as? CollectionTableModelDataSource<T.ModelType> {
             buttonsDataSource.viewIdentifier = identifier
             setupReusableIdentifiers(buttonsDataSource)
@@ -455,7 +455,7 @@ extension TableViewAbstractModelController {
 // Details data source
 extension TableViewAbstractModelController {
     
-    func assignDetailsIdentifiers<T: TableModelDataSource>(
+    public func assignDetailsIdentifiers<T: TableModelDataSource>(
         tableSection: TableSection<T>,
         identifiers: [String],
         cellAnimationType: UITableViewRowAnimation = .Fade) {
@@ -482,14 +482,14 @@ extension TableViewAbstractModelController {
 }
 
 extension TableViewAbstractModelController {
-    private func assignDetailsModel<M: Equatable>(detailsDataSource: DetailsTableModelDataSource<M>, model: M) -> Bool {
+    public func assignDetailsModel<M: Equatable>(detailsDataSource: DetailsTableModelDataSource<M>, model: M) -> Bool {
         let equal = detailsDataSource.model == model
         detailsDataSource.assignModel(model)
         
         return equal
     }
     
-    func assignModel<T: TableModelDataSource, M: Equatable where T.ModelType == M>(tableSection: TableSection<T>, model: M) {
+    public func assignModel<T: TableModelDataSource, M: Equatable where T.ModelType == M>(tableSection: TableSection<T>, model: M) {
         let modelDataSource = modelDataSourceForSection(tableSection)        
         if let detailsDataSource = modelDataSource as? DetailsTableModelDataSource<M> {            
             
@@ -507,7 +507,7 @@ extension TableViewAbstractModelController {
 // Zero view
 extension TableViewAbstractModelController {
     
-    func setupZeroView(zeroView: ZeroView) {
+    public func setupZeroView(zeroView: ZeroView) {
         
         // Remove it from superview
         let previousZeroView = self.zeroView
@@ -569,7 +569,7 @@ extension TableViewAbstractModelController {
         })
     }
     
-    func removeZeroView() {
+    public func removeZeroView() {
     
         if let zv = zeroView {
             self.zeroView = nil

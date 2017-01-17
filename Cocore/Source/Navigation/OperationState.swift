@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 // MARK: Generic operation state
 
-enum GenericOperationState<T, E: ErrorType>: SwiftState.StateType
+public enum GenericOperationState<T, E: ErrorType>: SwiftState.StateType
 {
     case Idle
     case InProgress
@@ -23,7 +23,7 @@ enum GenericOperationState<T, E: ErrorType>: SwiftState.StateType
 }
 
 extension GenericOperationState : CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
             case .Idle: return "Idle"
             case .InProgress: return "InProgress"
@@ -42,11 +42,11 @@ extension GenericOperationState : CustomStringConvertible {
 }
 
 extension GenericOperationState : Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return description/*.injectData(publicData(), nil)*/.hashValue
     }
 }
 
-func ==<T, E: ErrorType>(lhs: GenericOperationState<T, E>, rhs: GenericOperationState<T, E>) -> Bool {
+public func ==<T, E: ErrorType>(lhs: GenericOperationState<T, E>, rhs: GenericOperationState<T, E>) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

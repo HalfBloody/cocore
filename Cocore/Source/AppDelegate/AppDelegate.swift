@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Status bar
 

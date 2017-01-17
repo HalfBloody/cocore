@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Custom navigation controller 
 
-protocol CustomNavigationController {
+public protocol CustomNavigationController {
     
     /// Push view controller
     func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?)
@@ -24,16 +24,16 @@ protocol CustomNavigationController {
     func viewController() -> UIViewController
 }
 
-struct AnyCustomNavigationController : CustomNavigationController, Hashable {
+public struct AnyCustomNavigationController : CustomNavigationController, Hashable {
     let _pushViewController: (UIViewController, Bool, UIViewControllerAnimatedTransitioning?) -> ()
     let _popViewControllerAnimated: (Bool, UIViewControllerAnimatedTransitioning?) -> UIViewController?
     let _viewController: () -> UIViewController
     let _popToRootViewControllerAnimated: (Bool) -> [UIViewController]?
     
     // Hashable
-    let hashValue: Int
+    public let hashValue: Int
     
-    init<T: CustomNavigationController where T: Hashable>(_ navigationController: T) {
+    public init<T: CustomNavigationController where T: Hashable>(_ navigationController: T) {
         _pushViewController = navigationController.pushViewController
         _popViewControllerAnimated = navigationController.popViewControllerAnimated
         _viewController = navigationController.viewController
@@ -41,24 +41,24 @@ struct AnyCustomNavigationController : CustomNavigationController, Hashable {
         hashValue = navigationController.hashValue
     }
     
-    func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
+    public func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
         _pushViewController(viewController, animated, transitioning)
     }
     
-    func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
+    public func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
         return _popViewControllerAnimated(animated, transitioning)
     }
     
-    func viewController() -> UIViewController {
+    public func viewController() -> UIViewController {
         return _viewController()
     }
     
-    func popToRootViewControllerAnimated(animated: Bool) -> [UIViewController]? {
+    public func popToRootViewControllerAnimated(animated: Bool) -> [UIViewController]? {
         return _popToRootViewControllerAnimated(animated)
     }
 }
 
-func ==(left: AnyCustomNavigationController, right: AnyCustomNavigationController) -> Bool {
+public func ==(left: AnyCustomNavigationController, right: AnyCustomNavigationController) -> Bool {
     return left.hashValue == right.hashValue
 }
 
@@ -90,19 +90,19 @@ extension UINavigationController : CustomNavigationController, UINavigationContr
     
     // MARK: --
     
-    func viewController() -> UIViewController {
+    public func viewController() -> UIViewController {
         return self
     }
     
     // MARK: Push / pop
     
-    func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
+    public func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
         delegate = self
         __currentTransitioning = transitioning
         pushViewController(viewController, animated: animated)
     }
     
-    func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
+    public func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
         delegate = self
         __currentTransitioning = transitioning
         return popViewControllerAnimated(animated)

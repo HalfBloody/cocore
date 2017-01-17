@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol MessageType {
+public protocol MessageType {
     associatedtype Head
     associatedtype Body
     var head: Head? { get }
     var body: Body? { get }
 }
 
-class Message<T, M> : MessageType {
-    var head: T?
-    var body: M?
+public class Message<T, M> : MessageType {
+    public var head: T?
+    public var body: M?
     
     init(head: T?, body: M?) {
         self.head = head

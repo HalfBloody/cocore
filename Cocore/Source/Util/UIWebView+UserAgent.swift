@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIWebView {
-    func userAgent() -> String {
+    public func userAgent() -> String {
         return stringByEvaluatingJavaScriptFromString("navigator.userAgent")!
     }
 }

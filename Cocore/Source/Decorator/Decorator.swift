@@ -9,33 +9,33 @@
 import Foundation
 import UIKit
 
-protocol Decorator {
+public protocol Decorator {
     var contentEdgeInsets: UIEdgeInsets { get }
     func decorate(contentView: UIView, decoratedView: UIView)
 }
 
-class BasicDecorator : Decorator {
+public class BasicDecorator : Decorator {
     
-    var contentEdgeInsets: UIEdgeInsets = UIEdgeInsetsZero
+    public var contentEdgeInsets: UIEdgeInsets = UIEdgeInsetsZero
     var decoratedViewBackgroundColor: UIColor?
     var contentViewBackgroundColor: UIColor?
     
-    var decoratedViewHidden: Bool = false
+    public var decoratedViewHidden: Bool = false
 
-    init() {
+    public init() {
         // Nothing here        
     }
     
-    init(edgeInsets: UIEdgeInsets) {
+    public init(edgeInsets: UIEdgeInsets) {
         self.contentEdgeInsets = edgeInsets
     }
     
-    init(decoratedViewBackgroundColor: UIColor?, contentViewBackgroundColor: UIColor?) {
+    public init(decoratedViewBackgroundColor: UIColor?, contentViewBackgroundColor: UIColor?) {
         self.decoratedViewBackgroundColor = decoratedViewBackgroundColor
         self.contentViewBackgroundColor = contentViewBackgroundColor
     }
     
-    func decorate(contentView: UIView, decoratedView: UIView) {
+    public func decorate(contentView: UIView, decoratedView: UIView) {
         decoratedView.backgroundColor = decoratedViewBackgroundColor
         contentView.backgroundColor = contentViewBackgroundColor
         
@@ -45,12 +45,12 @@ class BasicDecorator : Decorator {
 
 ////
 
-enum RounderDecoratorAppliance {
+public enum RounderDecoratorAppliance {
     case Top // round only top corners
     case Bottom // round only bottom corners
 }
 
-class RounderDecorator : BasicDecorator {
+public class RounderDecorator : BasicDecorator {
 
     // Corners
     var corners: UIRectCorner
@@ -60,7 +60,7 @@ class RounderDecorator : BasicDecorator {
         super.init(decoratedViewBackgroundColor: decoratedViewBackgroundColor, contentViewBackgroundColor: contentViewBackgroundColor)
     }
     
-    override func decorate(contentView: UIView, decoratedView: UIView) {
+    override public func decorate(contentView: UIView, decoratedView: UIView) {
         
         // Rounded corners
         let mask = CAShapeLayer()

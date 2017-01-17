@@ -9,15 +9,15 @@
 import Foundation
 import AdSupport
 
-class AdHelper {
+public class AdHelper {
 
-    static var advertisingTrackingEnabled: Bool {
+    public static var advertisingTrackingEnabled: Bool {
         get {
             return ASIdentifierManager.sharedManager().advertisingTrackingEnabled
         }
     }
 
-    static var advertisingIdentifier: String {
+    public static var advertisingIdentifier: String {
         get {
             return ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDString
         }

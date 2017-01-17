@@ -10,13 +10,13 @@ import SwiftState
 
 // MARK: Operatable state
 
-enum OperatableState<S: StateType> : StateType {
+public enum OperatableState<S: StateType> : StateType {
     case Operation(OperationControlType, S)
     case State(S)
 }
 
 extension OperatableState : Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         switch self {
         case .Operation(_, let state): return state.hashValue
         case .State(let state): return state.hashValue
@@ -24,13 +24,13 @@ extension OperatableState : Hashable {
     }
 }
 
-func ==<S: StateType>(lhs: OperatableState<S>, rhs: OperatableState<S>) -> Bool {
+public func ==<S: StateType>(lhs: OperatableState<S>, rhs: OperatableState<S>) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
 // MARK: Operation wrapper
 
-protocol OperationWrapper {
+public protocol OperationWrapper {
     associatedtype WrappedSType: StateType
     static func wrap(state: WrappedSType) -> Self
     static func wrapOperation(disposable: OperationControlType, _ state: WrappedSType) -> Self
@@ -38,17 +38,17 @@ protocol OperationWrapper {
 }
 
 extension OperatableState : OperationWrapper {
-    typealias WrappedSType = S
+    public typealias WrappedSType = S
     
-    static func wrap(state: S) -> OperatableState {
+    public static func wrap(state: S) -> OperatableState {
         return .State(state)
     }
     
-    static func wrapOperation(disposable: OperationControlType, _ state: S) -> OperatableState {
+    public static func wrapOperation(disposable: OperationControlType, _ state: S) -> OperatableState {
         return .Operation(disposable, state)
     }
     
-    func unwrap() -> WrappedSType {
+    public func unwrap() -> WrappedSType {
         switch self {
             case .State(let state): return state
             case .Operation(_, let state): return state
@@ -58,7 +58,7 @@ extension OperatableState : OperationWrapper {
 
 // MARK: <~ Overrides
 
-func <~<T: StateMachineConductor, S: StateType where T.SType: OperationWrapper, T.SType == OperatableState<S>>(left: T, right: T.SType.WrappedSType) {
+public func <~<T: StateMachineConductor, S: StateType where T.SType: OperationWrapper, T.SType == OperatableState<S>>(left: T, right: T.SType.WrappedSType) {
     left <~ OperatableState.State(right)
 }
 

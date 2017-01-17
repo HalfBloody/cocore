@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ViewModel<M> {
-    let model: M
+public class ViewModel<M> {
+    public let model: M
     
-    required init(model: M) {
+    public required init(model: M) {
         self.model = model
     }
 }

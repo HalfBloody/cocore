@@ -10,7 +10,7 @@ import SwiftState
 
 // MARK: Protocol
 
-protocol StateMachineConfigurator {
+public protocol StateMachineConfigurator {
     associatedtype SType: StateType
     associatedtype EType: EventType
     

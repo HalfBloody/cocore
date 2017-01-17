@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class PanelDecorator : BasicDecorator {    
-    override func decorate(contentView: UIView, decoratedView: UIView) {
+public class PanelDecorator : BasicDecorator {
+    override public func decorate(contentView: UIView, decoratedView: UIView) {
         
         // Background color
         decoratedView.backgroundColor = UIColor.whiteColor()

@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: Custom split view controller which allows only landscape orientation
 
-class RootViewController : UIViewController {
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+public class RootViewController : UIViewController {
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
     }
 }

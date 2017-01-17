@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ModelViewDataSource {
+public protocol ModelViewDataSource {
     func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView
     func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator
 }

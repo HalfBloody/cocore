@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 // Image size
-enum ImageSize: Int {
+public enum ImageSize: Int {
     case Small = 1
     case Medium
     case Big
@@ -26,7 +26,7 @@ enum ImageSize: Int {
 }
 
 // Task service
-class ImageService {
+public class ImageService {
 
     var imageFetchingProgress = [String: Bool]()
     var imageObservers = [String: [Observer<UIImage, NSError>]]()
@@ -35,7 +35,13 @@ class ImageService {
 
     // MARK: ----
 
-    func imageSignal<M: ImageFetchCompatible>(model: M, imageSize: ImageSize, placeholderImage: UIImage? = nil) -> SignalProducer<UIImage, NSError> {
+    public init() {
+        // Nothing here
+    }
+
+    // MARK: ----
+
+    public func imageSignal<M: ImageFetchCompatible>(model: M, imageSize: ImageSize, placeholderImage: UIImage? = nil) -> SignalProducer<UIImage, NSError> {
         if case .None = imageFetchingProgress[model.imageFetchIdentifier] {
 
             // Placeholder image for models which doesn't have image link
@@ -141,7 +147,7 @@ class ImageService {
 
 // MARK: ImageFetchCompatible protocol
 
-protocol ImageFetchCompatible : Hashable {
+public protocol ImageFetchCompatible : Hashable {
     var imageFetchIdentifier: String { get }
     func imageURLStringBySize(size size: ImageSize) -> String?
 }

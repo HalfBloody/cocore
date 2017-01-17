@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-protocol AdjustableVerticalDecorator {
+public protocol AdjustableVerticalDecorator {
     func totalVerticalAdjustment() -> CGFloat
 }

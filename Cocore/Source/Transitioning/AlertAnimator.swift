@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AlertAnimator : NSObject, UIViewControllerAnimatedTransitioning {
+public class AlertAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     
     let presenting: Bool
     
@@ -17,11 +17,11 @@ class AlertAnimator : NSObject, UIViewControllerAnimatedTransitioning {
         self.presenting = presenting
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         printd("ALERT \(presenting ? "PRESENTING" : "DISMISSING")")
         

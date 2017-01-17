@@ -8,7 +8,7 @@
 import Foundation
 import SwiftState
 
-class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachineConductor, StateMachineConfigurator {
+public class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachineConductor, StateMachineConfigurator {
     
     private var initialState: S?
     private func _setInitialState(state: S) throws {
@@ -19,7 +19,7 @@ class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachineConduc
     private let initialRoutes: [ Route<S, E> ]
     
     private var _stateMachine: StateMachine<S, E>?
-    var stateMachine: StateMachine<S, E> {
+    public var stateMachine: StateMachine<S, E> {
         get {
             if _stateMachine == nil {
                 _stateMachine = try! _configureStateMachine(initialState!)
@@ -28,12 +28,12 @@ class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachineConduc
         }
     }
     
-    init(routes: [ Route<S, E> ] = []) {
+    public init(routes: [ Route<S, E> ] = []) {
         self.initialState = nil
         self.initialRoutes = routes
     }
     
-    init(initialState: S? = nil, routes: [ Route<S, E> ]) throws {
+    public init(initialState: S? = nil, routes: [ Route<S, E> ]) throws {
         
         self.initialRoutes = routes
         
@@ -46,14 +46,14 @@ class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachineConduc
     
     // MARK: Configurator
     
-    func stateMachineRoutes() -> [ Route<S, E> ] {
+    public func stateMachineRoutes() -> [ Route<S, E> ] {
         return initialRoutes
     }
 }
 
 // MARK: <~ operator support
 
-func <~<S: StateType, E: EventType>(left: LazyStateMachineConductor<S, E>, right: S) throws -> StateMachine<S, E> {
+public func <~<S: StateType, E: EventType>(left: LazyStateMachineConductor<S, E>, right: S) throws -> StateMachine<S, E> {
     if case .None = left.initialState {
         try left._setInitialState(right)
     } else {

@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 import SwiftState
 
-class MainInterfaceController : AbstractInterfaceController {
+public class MainInterfaceController : AbstractInterfaceController {
 
     // MARK: Transitionings
 
-    let alertTransitioning = AlertTransitioning()
-    var slideTransitioning = SlideTransitioning()
-    let fadeTransitioning = FadeTransitioning()
+    public let alertTransitioning = AlertTransitioning()
+    public internal(set) var slideTransitioning = SlideTransitioning()
+    public let fadeTransitioning = FadeTransitioning()
 
     // MARK: ----
     
-    override func takeControlOverPresentation(animated animated: Bool) throws {
+    override public func takeControlOverPresentation(animated animated: Bool) throws {
         
         // Focus on navigator for initial appNavigator state
         try _focusInitialNavigationController()
@@ -32,11 +32,11 @@ class MainInterfaceController : AbstractInterfaceController {
     }
 
     /// Basically means to present focused navigation controller on window
-    internal func _focusInitialNavigationController() throws {
+    public func _focusInitialNavigationController() throws {
         // Nothing here, override in subclasses
     }
     
-    internal func _setupInitialController() throws {
+    public func _setupInitialController() throws {
         // Nothing here, override in subclasses
     }
 }
@@ -45,11 +45,11 @@ class MainInterfaceController : AbstractInterfaceController {
 
 extension MainInterfaceController {
 
-    override internal func presentModalController(viewController: UIViewController, animated: Bool = true) {
+    override public func presentModalController(viewController: UIViewController, animated: Bool = true) {
         presentModalController(viewController, animated: animated, transitioning: self.alertTransitioning)
     }
 
-    override internal func dismissModalController(animated: Bool = true) {
+    override public func dismissModalController(animated: Bool = true) {
         dismissModalController(animated, transitioning: self.alertTransitioning)
     }
 
@@ -59,7 +59,7 @@ extension MainInterfaceController {
 
 extension MainInterfaceController {
 
-    internal func presentMenuController(viewController: UIViewController, animated: Bool, completion: (() -> ())? = nil) {
+    public func presentMenuController(viewController: UIViewController, animated: Bool, completion: (() -> ())? = nil) {
 
         // Transitioning
         viewController.transitioningDelegate = self.slideTransitioning
@@ -73,7 +73,7 @@ extension MainInterfaceController {
 
     }
 
-    internal func dismissMenuController(animated: Bool, completion: (() -> ())? = nil) {
+    public func dismissMenuController(animated: Bool, completion: (() -> ())? = nil) {
 
         if let hostController = _modalControllerPresenter(),
             intentController = hostController.presentedViewController {
@@ -95,7 +95,7 @@ extension MainInterfaceController {
 
 extension MainInterfaceController {
 
-    internal func _performBaseReplaceTransition(intentController: UIViewController, dismiss: Bool = false) {
+    public func _performBaseReplaceTransition(intentController: UIViewController, dismiss: Bool = false) {
 
         let transitionController = OrientationLockedViewController()
         transitionController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -199,7 +199,7 @@ extension MainInterfaceController {
 
     }
 
-    internal func _performSlideReplaceTransition(intentController: UIViewController) {
+    public func _performSlideReplaceTransition(intentController: UIViewController) {
 
         // TRANSITION_CONTROL4LER
         let transitionController = OrientationLockedViewController()

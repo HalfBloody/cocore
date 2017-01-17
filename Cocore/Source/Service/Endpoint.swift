@@ -12,7 +12,7 @@ import ObjectMapper
 import AlamofireObjectMapper
 import ReactiveCocoa
 
-enum EndpointError : ErrorType {
+public enum EndpointError : ErrorType {
     
     // Server error
     case ServerError(String)
@@ -33,7 +33,7 @@ enum EndpointError : ErrorType {
     case Busy
 }
 
-enum EndpointRequestConstructorError : ErrorType {
+public enum EndpointRequestConstructorError : ErrorType {
     
     // Wrong input
     case WrongInput(expected: [Any.Type], received: Any.Type)
@@ -44,11 +44,11 @@ enum EndpointRequestConstructorError : ErrorType {
 }
 
 // E.g. Service, Navigator - one that control which endpoint to fire after what completed
-protocol EndpointOperator {
+public protocol EndpointOperator {
     
 }
 
-protocol EndpointType {
+public protocol EndpointType {
     
     associatedtype RequestType
     associatedtype MethodType
@@ -79,7 +79,7 @@ protocol EndpointType {
     // func handleResponse<O, K: Hashable>(request: RequestType) throws -> [K: O]
 }
 
-protocol EndpointRequestConstructorType {
+public protocol EndpointRequestConstructorType {
     
     associatedtype MethodType
     associatedtype RequestType
@@ -104,7 +104,7 @@ protocol EndpointRequestConstructorType {
 extension EndpointType {
     
     // Fire with request
-    func fire<O>(request request: RequestType) throws -> O {
+    public func fire<O>(request request: RequestType) throws -> O {
         return try handleResponse(request)
     }    
     
@@ -113,7 +113,7 @@ extension EndpointType {
 extension EndpointType where Self: EndpointRequestConstructorType {
     
     // Fire with input
-    func fire<M: MessageType, O>(input: M, method: MethodType) throws -> O {
+    public func fire<M: MessageType, O>(input: M, method: MethodType) throws -> O {
         let params = try constructParameters(input, method: method)
         let request = try constructRequest(params, method: method)
         return try handleResponse(request)
@@ -207,7 +207,7 @@ extension EndpointType {
     
     // Throwing by default response handler
     
-    func handleResponse<O>(request: RequestType) throws -> O {
+    public func handleResponse<O>(request: RequestType) throws -> O {
         throw EndpointError.UnhandledResponseType(O.self)
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AlertView : ModelConfigurableView {
+public class AlertView : ModelConfigurableView {
     
     @IBOutlet var button: CustomButton?
     @IBOutlet var purpleButton: PurpleButton?
@@ -19,7 +19,7 @@ class AlertView : ModelConfigurableView {
     @IBOutlet var cancelButton: CustomButton?
     @IBOutlet var label: UILabel?
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,7 +53,7 @@ class AlertView : ModelConfigurableView {
         }
     }
     
-    override func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
+    override public func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
         if let alertModel = viewModel.model as? AlertButtonModel {
             let alertViewModel = ViewModel(model: alertModel)
 
@@ -110,7 +110,7 @@ class AlertView : ModelConfigurableView {
     }
     
     // Multiline labels
-    override func multilineLabels() -> [UILabel?] {
+    override public func multilineLabels() -> [UILabel?] {
         return [
             label
         ]
@@ -118,7 +118,7 @@ class AlertView : ModelConfigurableView {
     
     // MARK: Observing
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         switch (keyPath, object) {
             case (.Some("showShadow"), let object) where object is UIButton:
                 let button = object as! UIButton

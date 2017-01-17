@@ -8,20 +8,20 @@
 
 import Foundation
 
-class ConfigurableModelViewDataSource<T: ModelConfigurableView> : ReusableModelViewDataSource {
+public class ConfigurableModelViewDataSource<T: ModelConfigurableView> : ReusableModelViewDataSource {
     
-    var configurator: ((T, NSIndexPath) -> T?)?
+    public var configurator: ((T, NSIndexPath) -> T?)?
     
-    override init() {
+    public override init() {
         super.init()
     }
     
-    init(_ configurator: (T, NSIndexPath) -> T?) {
+    public init(_ configurator: (T, NSIndexPath) -> T?) {
         super.init()
         self.configurator = configurator
     }
     
-    override func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {        
+    override public func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {        
         let modelConfigurableView = super.viewModelConfigurableForViewIdentifier(viewIdentifier, indexPath: indexPath)
         
         if let configurableView = modelConfigurableView as? T, 

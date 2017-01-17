@@ -9,12 +9,12 @@
 import Foundation
 import UIKit 
 
-protocol AlertModelProtocol {
+public protocol AlertModelProtocol {
     var headerImage: UIImage? { get }
 }
 
-class AlertModel : AlertModelProtocol {
-    let headerImage: UIImage?
+public class AlertModel : AlertModelProtocol {
+    public let headerImage: UIImage?
     init(headerImage: UIImage?) {
         self.headerImage = headerImage
     }
@@ -22,7 +22,7 @@ class AlertModel : AlertModelProtocol {
 
 ////
 
-enum AlertButton {
+public enum AlertButton {
     case Button(
         title: String, 
         color: UIColor, 
@@ -35,9 +35,9 @@ enum AlertButton {
 }
 
 
-class AlertButtonModel {
+public class AlertButtonModel {
     var button: AlertButton
-    init(_ button: AlertButton) {
+    public init(_ button: AlertButton) {
         self.button = button
     }
 }

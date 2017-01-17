@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class TwoLineNavigationView : UIView {
+public class TwoLineNavigationView : UIView {
     
     @IBOutlet var firstTitleLabel: UILabel?
     @IBOutlet var secondTitleLabel: UILabel?    
     
     // MARK: Construction
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Clear background color

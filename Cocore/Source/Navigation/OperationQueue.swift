@@ -13,7 +13,7 @@ import ARSLineProgress
 
 // MARK: Any operation
 
-struct AnyOperationControl : OperationControlType {
+public struct AnyOperationControl : OperationControlType {
     
     let _start: () -> ReactiveCocoa.Disposable
     let _cancel: () -> ()
@@ -23,23 +23,23 @@ struct AnyOperationControl : OperationControlType {
         _cancel = operationControl.cancel
     }
     
-    func start() -> ReactiveCocoa.Disposable {
+    public func start() -> ReactiveCocoa.Disposable {
         return _start()
     }
     
-    func cancel() {
+    public func cancel() {
         _cancel()
     }
 }
 
 // MARK: Operation assistant
 
-class OperationQueue : AbstractDisposableHolder {
+public class OperationQueue : AbstractDisposableHolder {
    
     var operations = [ AnyOperationControl ]()
     
     // Enqueue operation from signal
-    func enqueue<O, E: ErrorType>(operation: Operation<O, E>) {
+    public func enqueue<O, E: ErrorType>(operation: Operation<O, E>) {
         
         func __operationCleanup(op: Operation<O, E>) {
             
@@ -84,9 +84,9 @@ class OperationQueue : AbstractDisposableHolder {
 
 // MARK: Progress queue
 
-class ModalProgressOperationQueue : OperationQueue {
+public class ModalProgressOperationQueue : OperationQueue {
     
-    override func enqueue<O, E: ErrorType>(operation: Operation<O, E>) {
+    override public func enqueue<O, E: ErrorType>(operation: Operation<O, E>) {
         
         operation.progressStarted {
             ARSLineProgress.show()

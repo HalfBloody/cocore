@@ -9,15 +9,15 @@
 import UIKit
 import JDStatusBarNotification
 
-enum NotificationStyle : String {
+public enum NotificationStyle : String {
     case Error = "Error"
     case Success = "Success"
     case NeutralDark = "NeutralDark"
 }
 
-class StatusBarNotifier {
+public class StatusBarNotifier {
     
-    static func configureAppearance() {
+    public static func configureAppearance() {
         
         // Error, white text on red background
         _configureAppearance(.Error, barColor: Colors.purple, textColor: Colors.white, font: UIFont.customFont(.RamblaRegular, .Small))
@@ -31,49 +31,49 @@ class StatusBarNotifier {
     
     // MARK: Explicit error, success and neutral
     
-    static func error(status: String) {
+    public static func error(status: String) {
         show(status, style: .Error)
     }
     
-    static func error(status: String, dismissAfter timeInterval: NSTimeInterval) {
+    public static func error(status: String, dismissAfter timeInterval: NSTimeInterval) {
         show(status, style: .Error, dismissAfter: timeInterval)
     }
     
-    static func success(status: String) {
+    public static func success(status: String) {
         show(status, style: .Success)
     }
     
-    static func success(status: String, dismissAfter timeInterval: NSTimeInterval) {
+    public static func success(status: String, dismissAfter timeInterval: NSTimeInterval) {
         show(status, style: .Success, dismissAfter: timeInterval)
     }
     
-    static func neutral(status: String) {
+    public static func neutral(status: String) {
         show(status, style: .NeutralDark)
     }
     
-    static func neutral(status: String, dismissAfter timeInterval: NSTimeInterval) {
+    public static func neutral(status: String, dismissAfter timeInterval: NSTimeInterval) {
         show(status, style: .NeutralDark, dismissAfter: timeInterval)
     }
     
     // MARK: Show / dismiss
     
-    static func show(status: String, style: NotificationStyle) {
+    public static func show(status: String, style: NotificationStyle) {
         JDStatusBarNotification.showWithStatus(status, styleName: style.rawValue)
     }
     
-    static func show(status: String, style: NotificationStyle, dismissAfter timeInterval: NSTimeInterval) {
+    public static func show(status: String, style: NotificationStyle, dismissAfter timeInterval: NSTimeInterval) {
         JDStatusBarNotification.showWithStatus(status, dismissAfter: timeInterval, styleName: style.rawValue)
     }
     
-    static func dismiss() {
+    public static func dismiss() {
         JDStatusBarNotification.dismiss()
     }
     
-    static func dismissAnimated(animated: Bool) {
+    public static func dismissAnimated(animated: Bool) {
         JDStatusBarNotification.dismissAnimated(animated)
     }
     
-    static func dismissAfter(delay: NSTimeInterval) {
+    public static func dismissAfter(delay: NSTimeInterval) {
         JDStatusBarNotification.dismissAfter(delay)
     }
     

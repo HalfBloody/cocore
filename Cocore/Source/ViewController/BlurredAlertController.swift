@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BlurredAlertController : AlertController {
+public class BlurredAlertController : AlertController {
     
     // Blur view
     
@@ -29,14 +29,14 @@ class BlurredAlertController : AlertController {
         }
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Add blur effect  
         view.insertSubview(self.blurredView, aboveSubview: backgroundView!)
     }
     
-    override func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
+    override public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
         switch (indexPath.section, indexPath.row, footerSection) {
 
             case (headerSection!.section, 0, _):

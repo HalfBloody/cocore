@@ -12,8 +12,8 @@ import UIKit
 let kLockNotification = "com.prizeArena.lockButtons"
 let kUnlockNotification = "com.prizeArena.unlockButtons"
 
-class ProfileButton : CustomButton {
-    override func awakeFromNib() {
+public class ProfileButton : CustomButton {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Don't subscribe to lock / unlock notifications
@@ -21,12 +21,12 @@ class ProfileButton : CustomButton {
     }
 }
 
-class CustomButton : UIButton {
+public class CustomButton : UIButton {
     
-    var selectionEnabled: Bool = true
-    var allowTransitionToSelectedState: Bool = true
+    public var selectionEnabled: Bool = true
+    public var allowTransitionToSelectedState: Bool = true
     
-    static var enabledButtons = true { 
+    public static var enabledButtons = true {
         didSet {
             if enabledButtons {
                 printd("BUTTONS ENABLED")
@@ -38,45 +38,45 @@ class CustomButton : UIButton {
         }
     }
         
-    var textColor: UIColor? {
+    public var textColor: UIColor? {
         didSet {
             setTitleColor(textColor, forState: .Normal)
         }
     }
     
-    var selectedTextColor: UIColor? {
+    public var selectedTextColor: UIColor? {
         didSet {
             setTitleColor(selectedTextColor, forState: .Selected)
         }
     }
     
-    var color: UIColor? {
+    public var color: UIColor? {
         didSet {
             backgroundColor = color
         }
     }
     
-    var selectedColor: UIColor?
+    public var selectedColor: UIColor?
     
-    var fontSize = FontSize.Large {
+    public var fontSize = FontSize.Large {
         didSet {
             updateLabelFont()
         }
     }
     
-    var fontFamily = FontFamily.RamblaBold {
+    public var fontFamily = FontFamily.RamblaBold {
         didSet {
             updateLabelFont()
         }
     }
     
-    var cornerRadius: CGFloat? {
+    public var cornerRadius: CGFloat? {
         didSet {
             layer.cornerRadius = cornerRadius!
         }
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         updateLabelFont()
         
@@ -99,7 +99,7 @@ class CustomButton : UIButton {
         // showShadow = true
     }
     
-    var showShadow: Bool = true {
+    public var showShadow: Bool = true {
         didSet {
             if showShadow {
                 layer.shadowRadius = 8.0
@@ -118,7 +118,7 @@ class CustomButton : UIButton {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()        
         
         switch cornerRadius {
@@ -129,7 +129,7 @@ class CustomButton : UIButton {
     
     // Highlighted / selected
     
-    override var selected: Bool {
+    override public var selected: Bool {
         didSet {
             
             // Setup selected color if not provided

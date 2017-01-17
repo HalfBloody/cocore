@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TableModelDataSource {
+public protocol TableModelDataSource {
     associatedtype ModelType
     
     func numberOfSections() -> Int
@@ -27,7 +27,7 @@ protocol TableModelDataSource {
 extension TableModelDataSource {
     
     // Returns total number of rows for data source
-    func totalNumberOfRows() -> Int {
+    public func totalNumberOfRows() -> Int {
         var totalRows = 0
         for section in 0..<numberOfSections() {
             totalRows += numberOfRowsInSection(section)
@@ -36,23 +36,23 @@ extension TableModelDataSource {
         return totalRows
     }
     // Get model for index
-    func modelForIndex(index: Int) -> ModelType {            
+    public func modelForIndex(index: Int) -> ModelType {            
         return modelForIndexPath(indexPath(index)!)
     }
     
     // Get view model for index
-    func viewModelForIndex(index: Int) -> ViewModel<ModelType> {
+    public func viewModelForIndex(index: Int) -> ViewModel<ModelType> {
         return viewModelForIndexPath(indexPath(index)!)
     }
     
     // Get view identifier for index
-    func viewIdentifierForIndex(index: Int) -> String {
+    public func viewIdentifierForIndex(index: Int) -> String {
         return viewIdentifierForIndexPath(indexPath(index)!)
     }    
 }
 
 extension TableModelDataSource where Self: SequenceType, Self.Generator.Element == (Int, NSIndexPath) {
-    func generate() -> AnyGenerator<(Int, NSIndexPath)> {
+    public func generate() -> AnyGenerator<(Int, NSIndexPath)> {
         
         var countableIndex = 0
         var countableRow = 0
@@ -76,7 +76,7 @@ extension TableModelDataSource where Self: SequenceType, Self.Generator.Element 
         }
     }
     
-    func indexPath(index: Int) -> NSIndexPath? {
+    public func indexPath(index: Int) -> NSIndexPath? {
         var indexPath: NSIndexPath? = nil
         
         for (idx, ip) in self {
@@ -90,7 +90,7 @@ extension TableModelDataSource where Self: SequenceType, Self.Generator.Element 
     }
 }
 
-struct TableModelDataSourceThunk: TableModelDataSource {  
+public struct TableModelDataSourceThunk: TableModelDataSource {
     
     let _numberOfSections: () -> Int
     let _numberOfRowsInSection: (Int) -> Int
@@ -126,43 +126,43 @@ struct TableModelDataSourceThunk: TableModelDataSource {
         _viewModelForIndex = viewModelForIndex
     }  
     
-    func numberOfSections() -> Int {
+    public func numberOfSections() -> Int {
         return _numberOfSections()
     }
     
-    func numberOfRowsInSection(section: Int) -> Int {
+    public func numberOfRowsInSection(section: Int) -> Int {
         return _numberOfRowsInSection(section)
     }
     
-    func modelForIndexPath(indexPath: NSIndexPath) -> AnyObject {
+    public func modelForIndexPath(indexPath: NSIndexPath) -> AnyObject {
         return _modelForIndexPath(indexPath)
     }
     
-    func viewModelForIndexPath(indexPath: NSIndexPath) -> ViewModel<AnyObject> {
+    public func viewModelForIndexPath(indexPath: NSIndexPath) -> ViewModel<AnyObject> {
         return _viewModelForIndexPath(indexPath)
     }
     
-    func viewIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
+    public func viewIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
         return _viewIdentifierForIndexPath(indexPath)
     }
     
-    func indexPath(index: Int) -> NSIndexPath? {
+    public func indexPath(index: Int) -> NSIndexPath? {
         return _indexPath(index)
     }
     
-    func totalNumberOfRows() -> Int {
+    public func totalNumberOfRows() -> Int {
         return _totalNumberOfRows()
     }
     
-    func modelForIndex(index: Int) -> AnyObject {
+    public func modelForIndex(index: Int) -> AnyObject {
         return _modelForIndex(index)
     }
     
-    func viewModelForIndex(index: Int) -> ViewModel<AnyObject> {
+    public func viewModelForIndex(index: Int) -> ViewModel<AnyObject> {
         return _viewModelForIndex(index)
     }
     
-    func viewIdentifierForIndex(index: Int) -> String {
+    public func viewIdentifierForIndex(index: Int) -> String {
         return _viewIdentifierForIndex(index)
     }    
 }  

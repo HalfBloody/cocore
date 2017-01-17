@@ -13,12 +13,12 @@ import Alamofire
 import AlamofireObjectMapper
 import RealmSwift
 
-protocol Identifiable {
+public protocol Identifiable {
     associatedtype IdentifierType: CustomStringConvertible
     var identifier: IdentifierType { get }
 }
 
-protocol CRUD {
+public protocol CRUD {
     
     associatedtype Error: ErrorType
     
@@ -35,11 +35,11 @@ protocol CRUD {
     // func retrieve<T: Mappable>(path: String, keypath: String) -> Result<[T], Error>
 }
 
-protocol CRUDIdentifiable {
+public protocol CRUDIdentifiable {
     
 }
 
-protocol CRUDMutable : CRUD {
+public protocol CRUDMutable : CRUD {
 
     // Create mappable leader -> get leader
     func create<T: Mappable, O: protocol<Identifiable, Mappable>>(object: T, scenario: String) -> Result<O, Error>
@@ -64,7 +64,7 @@ protocol CRUDMutable : CRUD {
 extension HTTPEndpoint : CRUD {
     
     // Retrieve object by path
-    func retrieve<T: CustomStringConvertible, O: Mappable>(path: T, 
+    public func retrieve<T: CustomStringConvertible, O: Mappable>(path: T, 
         scenario: String) -> Result<O, EndpointError> {        
             
         let request = try! constructRequest(nil, method: .GET)
@@ -72,7 +72,7 @@ extension HTTPEndpoint : CRUD {
     }
     
     // Retrieve mappable by identifier
-    func retrieve<T: Mappable>(id id: String, 
+    public func retrieve<T: Mappable>(id id: String,
         scenario: String) -> SignalProducer<T, EndpointError> {
         
         let method = Alamofire.Method.GET
@@ -83,7 +83,7 @@ extension HTTPEndpoint : CRUD {
     }
     
     // Retrieve mappable collection by identifier
-    func retrieve<T: Mappable>(path: CustomStringConvertible, 
+    public func retrieve<T: Mappable>(path: CustomStringConvertible, 
         scenario: String) -> Result<[T], EndpointError> {
             
         let method = Alamofire.Method.GET
@@ -96,7 +96,7 @@ extension HTTPEndpoint : CRUD {
     // MARK: Signal Producers
     
     // Retrieve object by path
-    func retrieve<T: CustomStringConvertible, O: Mappable>(path: T, 
+    public func retrieve<T: CustomStringConvertible, O: Mappable>(path: T,
         keypath: String, scenario: String) -> SignalProducer<O, EndpointError> {        
             
         let message = Message<CustomStringConvertible, AnyObject>(head: path, body: nil)
@@ -106,7 +106,7 @@ extension HTTPEndpoint : CRUD {
     }
     
     // Retrieve mappable collection from keypath
-    func retrieve<T: Mappable>(path: String, 
+    public func retrieve<T: Mappable>(path: String,
         keypath: String, 
         scenario: String) -> SignalProducer<[T], EndpointError> {
         
@@ -122,7 +122,7 @@ extension HTTPEndpoint : CRUD {
     }
     
     // Retrieve mappable collection from keypath
-    func retrieve<T: Mappable>(path: String, 
+    public func retrieve<T: Mappable>(path: String,
         keypath: String, 
         parameters: Dictionary<String, AnyObject>, 
         scenario: String) -> SignalProducer<[T], EndpointError> {
@@ -161,7 +161,7 @@ extension HTTPEndpoint : CRUD {
 extension HTTPEndpoint {
     
     // E.g. POST /task_transactions
-    func touch<T: Mappable>(path: CustomStringConvertible, 
+    public func touch<T: Mappable>(path: CustomStringConvertible,
         keypath: String, 
         parameters: Dictionary<String, AnyObject>,
         scenario: String) -> SignalProducer<T, EndpointError> {
@@ -175,7 +175,7 @@ extension HTTPEndpoint {
     }
     
     // E.g. POST /gift_card
-    func touch(path: CustomStringConvertible, 
+    public func touch(path: CustomStringConvertible,
         parameters: Dictionary<String, AnyObject>, 
         scenario: String) -> SignalProducer<Bool, EndpointError> {
             
@@ -188,7 +188,7 @@ extension HTTPEndpoint {
     }
     
     // E.g. PATCH /gift_card
-    func update(path: CustomStringConvertible, 
+    public func update(path: CustomStringConvertible,
         parameters: Dictionary<String, AnyObject>, 
         scenario: String) -> SignalProducer<Bool, EndpointError> {
             
@@ -201,7 +201,7 @@ extension HTTPEndpoint {
     }
     
     // E.g. POST /devices/me
-    func create<T: Mappable>(object: Dictionary<String, AnyObject>, 
+    public func create<T: Mappable>(object: Dictionary<String, AnyObject>,
         keypath: String,
         scenario: String) -> SignalProducer<T, EndpointError> {
             
@@ -213,7 +213,7 @@ extension HTTPEndpoint {
     }
     
     // E.g. PATCH /devices/me
-    func update(path: String, 
+    public func update(path: String, 
         object: Dictionary<String, AnyObject>,
         scenario: String) -> SignalProducer<Bool, EndpointError> {
             

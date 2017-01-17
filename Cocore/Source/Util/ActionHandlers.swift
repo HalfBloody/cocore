@@ -8,4 +8,4 @@
 
 import Foundation
 
-typealias ActionHandler = () -> ()
+public typealias ActionHandler = () -> ()

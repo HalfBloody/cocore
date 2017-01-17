@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: Phone navigation controller
 
-class PhoneNavigationController : UINavigationController {
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+public class PhoneNavigationController : UINavigationController {
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return .Portrait
     }
 }

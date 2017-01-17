@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WebController : UIViewController {
+public class WebController : UIViewController {
     
     var url: NSURL
     
@@ -20,11 +20,11 @@ class WebController : UIViewController {
     
     // MARK: Handlers
     
-    var backHandler: ActionHandler?
+    public var backHandler: ActionHandler?
     
     // MARK: ----
     
-    init (title: String, url: NSURL) {
+    public init (title: String, url: NSURL) {
         
         // URL
         self.url = url
@@ -39,7 +39,7 @@ class WebController : UIViewController {
         self.title = title
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -55,7 +55,7 @@ class WebController : UIViewController {
     
     // MARK: View
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Addign self as web view delegate
@@ -81,21 +81,21 @@ class WebController : UIViewController {
                               action: #selector(back))
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         // Disable left bar button item untile fully appeared
         self.navigationItem.leftBarButtonItem?.enabled = false
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         // Enable left bar button item when appeared
         self.navigationItem.leftBarButtonItem?.enabled = true
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override public func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Clear UIWebView's delegate reference
@@ -114,7 +114,7 @@ class WebController : UIViewController {
 }
 
 extension WebController : UIWebViewDelegate {
-    func webViewDidFinishLoad(webView: UIWebView) {
+    public func webViewDidFinishLoad(webView: UIWebView) {
         backItem?.enabled = webView.canGoBack
         forwardItem?.enabled = webView.canGoForward
     }

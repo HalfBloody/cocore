@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SlideAnimator : NSObject, UIViewControllerAnimatedTransitioning {
+public class SlideAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     
     let presenting: Bool
     
@@ -17,11 +17,11 @@ class SlideAnimator : NSObject, UIViewControllerAnimatedTransitioning {
         self.presenting = presenting
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         printd("SLIDE \(presenting ? "PRESENTING" : "DISMISSING")")
                 

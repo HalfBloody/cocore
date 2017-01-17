@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol SnapshotableController {
+public protocol SnapshotableController {
     var snapshotImage: UIImage? { get set }
     func takeSnapshot() -> UIImage
 }
@@ -18,7 +18,7 @@ private var xoAssociationKey: UInt8 = 0
 
 extension UIViewController: SnapshotableController { 
     
-    var snapshotImage: UIImage? {
+    public var snapshotImage: UIImage? {
         get {
             return objc_getAssociatedObject(self, &xoAssociationKey) as? UIImage
         }
@@ -27,7 +27,7 @@ extension UIViewController: SnapshotableController {
         }
     }
     
-    func takeSnapshot() -> UIImage {
+    public func takeSnapshot() -> UIImage {
         let scale = UIScreen.mainScreen().scale
         UIGraphicsBeginImageContext(CGSize(width: view.bounds.size.width * scale, height: view.bounds.size.height * scale))
         if let context = UIGraphicsGetCurrentContext() {        

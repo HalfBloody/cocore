@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class SlideTransitioning : NSObject, UIViewControllerTransitioningDelegate { 
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+public class SlideTransitioning : NSObject, UIViewControllerTransitioningDelegate { 
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideAnimator(presenting: true)
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideAnimator(presenting: false)
     }
 }

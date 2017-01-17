@@ -10,11 +10,11 @@ import SwiftState
 
 // MARK: Protocol
 
-enum StateMachineError : ErrorType {
+public enum StateMachineError : ErrorType {
     case WrongConfiguration(String)
 }
 
-protocol StateMachineConductor {
+public protocol StateMachineConductor {
     associatedtype SType: StateType
     associatedtype EType: EventType
     
@@ -26,7 +26,7 @@ protocol StateMachineConductor {
 
 infix operator <~ { associativity left }
 
-func <~<T: StateMachineConductor>(left: T, right: T.SType) -> StateMachine<T.SType, T.EType> {
+public func <~<T: StateMachineConductor>(left: T, right: T.SType) -> StateMachine<T.SType, T.EType> {
     return left.stateMachine <- right
 }
 
@@ -34,7 +34,7 @@ func <~<T: StateMachineConductor>(left: T, right: T.SType) -> StateMachine<T.STy
 
 infix operator <~? { associativity left }
 
-func <~?<T: StateMachineConductor>(left: T, right: T.SType) -> Bool {
+public func <~?<T: StateMachineConductor>(left: T, right: T.SType) -> Bool {
     return left.stateMachine.canTryState(right)
 }
 
@@ -42,7 +42,7 @@ func <~?<T: StateMachineConductor>(left: T, right: T.SType) -> Bool {
 
 infix operator <~! { associativity left }
 
-func <~!<T: StateMachineConductor>(left: T, right: T.EType) -> Machine<T.SType, T.EType> {
+public func <~!<T: StateMachineConductor>(left: T, right: T.EType) -> Machine<T.SType, T.EType> {
     return left.stateMachine <-! right
 }
 
@@ -50,18 +50,18 @@ func <~!<T: StateMachineConductor>(left: T, right: T.EType) -> Machine<T.SType, 
 
 infix operator <~!? { associativity left }
 
-func <~!?<T: StateMachineConductor>(left: T, right: T.EType) -> T.SType? {
+public func <~!?<T: StateMachineConductor>(left: T, right: T.EType) -> T.SType? {
     return left.stateMachine.canTryEvent(right)
 }
 
-func <~!?<T: StateMachineConductor>(left: T, right: T.EType) -> Bool {
+public func <~!?<T: StateMachineConductor>(left: T, right: T.EType) -> Bool {
     return (left <~!? right) != nil
 }
 
 // MARK: Any conductor
 
-struct AnyStateMachineConductor<S: StateType, E: EventType> : StateMachineConductor {
-    let stateMachine: StateMachine<S, E>
+public struct AnyStateMachineConductor<S: StateType, E: EventType> : StateMachineConductor {
+    public let stateMachine: StateMachine<S, E>
     init<T: StateMachineConductor where T.SType == S, T.EType == E>(conductor: T) {
         self.stateMachine = conductor.stateMachine
     }

@@ -10,7 +10,7 @@ import SwiftState
 
 extension GenericOperationState : StateTypeComparable {
     
-    static func modestComparator() -> (GenericOperationState<T, E>, GenericOperationState<T, E>) -> Bool {
+    public static func modestComparator() -> (GenericOperationState<T, E>, GenericOperationState<T, E>) -> Bool {
         return { left, right in
             switch (left, right) {
                 
@@ -42,7 +42,7 @@ extension GenericOperationState : StateTypeComparable {
         }
     }
     
-    static func greedyComparator() -> (GenericOperationState<T, E>, GenericOperationState<T, E>) -> Bool {
+    public static func greedyComparator() -> (GenericOperationState<T, E>, GenericOperationState<T, E>) -> Bool {
         return { left, right in
             switch (left, right) {
                 

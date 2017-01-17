@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 // MARK: Generic operation event
 
-enum GenericOperationEvent<T, E: ErrorType>: SwiftState.EventType {
+public enum GenericOperationEvent<T, E: ErrorType>: SwiftState.EventType {
     case Start
     case Next(T)
     case Complete
@@ -21,7 +21,7 @@ enum GenericOperationEvent<T, E: ErrorType>: SwiftState.EventType {
 }
 
 extension GenericOperationEvent : CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
             case .Start: return "Start"
             case .Next/*(let next)*/: return "Next"                                 // NOTE: result not considered
@@ -33,11 +33,11 @@ extension GenericOperationEvent : CustomStringConvertible {
 }
 
 extension GenericOperationEvent : Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return description/*.injectData(publicData(), nil)*/.hashValue
     }
 }
 
-func ==<T, E: ErrorType>(lhs: GenericOperationEvent<T, E>, rhs: GenericOperationEvent<T, E>) -> Bool {
+public func ==<T, E: ErrorType>(lhs: GenericOperationEvent<T, E>, rhs: GenericOperationEvent<T, E>) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

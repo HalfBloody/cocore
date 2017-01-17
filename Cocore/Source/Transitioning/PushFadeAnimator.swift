@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class PushFadeAnimator : NSObject, UIViewControllerAnimatedTransitioning {
+public class PushFadeAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         

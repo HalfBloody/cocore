@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum FontSize: CGFloat {
+public enum FontSize: CGFloat {
     case XXXLarge = 60.0
     case XXLarge = 25.0
     case XLarger = 23.0
@@ -23,7 +23,7 @@ enum FontSize: CGFloat {
     case XSmall = 11.0
 }
 
-enum FontFamily: String {
+public enum FontFamily: String {
     case RamblaRegular = "Rambla-Regular"
     case RamblaBold = "Rambla-Bold"
     case RamblaItalic = "Rambla-Italic"
@@ -31,7 +31,7 @@ enum FontFamily: String {
 }
 
 extension UIFont {
-    class func customFont(fontFamily: FontFamily, _ size: FontSize) -> UIFont {
+    public class func customFont(fontFamily: FontFamily, _ size: FontSize) -> UIFont {
         return UIFont(name: fontFamily.rawValue, size: size.rawValue)!
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: Orientation locked view controller
 
-class OrientationLockedViewController : UIViewController {
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+public class OrientationLockedViewController : UIViewController {
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         switch UIDevice.currentDevice().userInterfaceIdiom {
         case .Pad:
             return .Landscape

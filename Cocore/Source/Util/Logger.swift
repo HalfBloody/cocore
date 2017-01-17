@@ -50,7 +50,7 @@ extension LogContext : CustomStringConvertible {
 
 // MARK: Custom Lumberjack-Papertrail formatter
 
-class CustomLogFormatter : RMSyslogFormatter {
+public class CustomLogFormatter : RMSyslogFormatter {
     
     let dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -59,7 +59,7 @@ class CustomLogFormatter : RMSyslogFormatter {
         return formatter
     }()
     
-    override func formatLogMessage(logMessage: DDLogMessage!) -> String! {
+    override public func formatLogMessage(logMessage: DDLogMessage!) -> String! {
         
         let logLevel: String = {
             switch logMessage.flag {
@@ -79,8 +79,8 @@ class CustomLogFormatter : RMSyslogFormatter {
 
 // MARK: Custom console log formatter 
 
-class CustomRawLogFormatter : NSObject, DDLogFormatter {
-    func formatLogMessage(logMessage: DDLogMessage!) -> String! {
+public class CustomRawLogFormatter : NSObject, DDLogFormatter {
+    public func formatLogMessage(logMessage: DDLogMessage!) -> String! {
         
         // Log level color
         let logColor: String = {
@@ -180,7 +180,7 @@ public func logRavenMessage(message: String, level: RavenClient.RLogLevel, publi
 // MARK: Dictionary extension
 
 extension Dictionary {
-    init(_ pairs: [Element]) {
+    public init(_ pairs: [Element]) {
         self.init()
         for (k, v) in pairs {
             self[k] = v
@@ -189,7 +189,7 @@ extension Dictionary {
 }
 
 extension Dictionary where Value: AnyObject {
-    func plainDict() -> [Key: String] {
+    public func plainDict() -> [Key: String] {
         let dict = Dictionary<Key, String?>(
             self.map { (key, value) in
                 switch value {
@@ -245,7 +245,7 @@ extension String {
 // MARK: String extension for better localization
 
 extension String {
-    func localized(comment: String = "", args: CVarArgType...) -> String {
+    public func localized(comment: String = "", args: CVarArgType...) -> String {
         return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: comment)
     }
 }
@@ -265,21 +265,21 @@ func += <K, V> (inout left: [K:V], right: [K:V]?) {
 
 // MARK: Public data protocol
 
-protocol DebugableContent {
+public protocol DebugableContent {
     func publicData() -> [String: AnyObject]?
     func privateData() -> [String: AnyObject]?
 }
 
 extension DebugableContent {
-    func publicData() -> [String: AnyObject]? { return nil }
-    func privateData() -> [String: AnyObject]? { return nil }
+    public func publicData() -> [String: AnyObject]? { return nil }
+    public func privateData() -> [String: AnyObject]? { return nil }
 }
 
 // MARK: Inject public data from DebuggableContent
 
-infix operator << { associativity left }
+infix operator ^ { associativity left }
 
-func << (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
+public func ^ (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
     var dict = left
     if let debugable = right as? DebugableContent {
         dict += debugable.publicData()
@@ -287,9 +287,9 @@ func << (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
     return dict
 }
 
-infix operator <<- { associativity left }
+infix operator ^- { associativity left }
 
-func <<- (left: [String: AnyObject], right: (String, Any?)) -> [String: AnyObject] {
+public func ^- (left: [String: AnyObject], right: (String, Any?)) -> [String: AnyObject] {
     var dict = left
     if let debugable = right.1 as? DebugableContent,
         let publicData = debugable.publicData() {
@@ -300,9 +300,9 @@ func <<- (left: [String: AnyObject], right: (String, Any?)) -> [String: AnyObjec
     return dict
 }
 
-infix operator <<< { associativity left }
+infix operator ^^ { associativity left }
 
-func <<< (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
+public func ^^ (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
     var dict = left
     if let debugable = right as? DebugableContent {
         dict += debugable.privateData()
@@ -310,9 +310,9 @@ func <<< (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
     return dict
 }
 
-infix operator <<<- { associativity left }
+infix operator ^^- { associativity left }
 
-func <<<- (left: [String: AnyObject], right: (String, Any?)) -> [String: AnyObject] {
+public func ^^- (left: [String: AnyObject], right: (String, Any?)) -> [String: AnyObject] {
     var dict = left
     if let debugable = right.1 as? DebugableContent,
         let publicData = debugable.privateData() {

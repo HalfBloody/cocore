@@ -9,4 +9,4 @@
 import Foundation
 import UIKit
 
-class SnapshotView : UIImageView { }
+public class SnapshotView : UIImageView { }

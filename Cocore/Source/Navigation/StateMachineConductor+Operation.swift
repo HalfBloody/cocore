@@ -20,7 +20,7 @@ extension StateMachineConductor where SType: OperationWrapper {
 
     // MARK: handleOperation
     
-    func handleOperationEvent<O, E: ErrorType>(
+    public func handleOperationEvent<O, E: ErrorType>(
         operationSpawner operationSpawner: (event: EType, fromState: SType, toState: SType, userInfo: Any?) -> (Operation<O, E>?),
                          operationQueue: OperationQueue,
                          started: ((EType) throws -> (SType.WrappedSType?))? = nil,

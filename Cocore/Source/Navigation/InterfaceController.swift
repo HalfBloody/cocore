@@ -11,7 +11,7 @@ import SwiftState
 
 // MARK: Interface controller
 
-protocol InterfaceController {
+public protocol InterfaceController {
     
     /// Window
     var window: UIWindow { get }
@@ -29,21 +29,21 @@ protocol InterfaceController {
     func dismissModalController(animated: Bool)
 }
 
-class AbstractInterfaceController : AbstractDisposableHolder, InterfaceController {
+public class AbstractInterfaceController : AbstractDisposableHolder, InterfaceController {
     
-    internal var _presented = false
-    let window: UIWindow
+    public var _presented = false
+    public let window: UIWindow
     
-    internal(set) var currentNavigationController: AnyCustomNavigationController?
-    internal var modalControllerPresenter: UIViewController?
+    public internal(set) var currentNavigationController: AnyCustomNavigationController?
+    public var modalControllerPresenter: UIViewController?
 
     // MARK: ----
     
-    init(window: UIWindow) {
+    public init(window: UIWindow) {
         self.window = window
     }
         
-    /*final*/ func focus(navigationController: AnyCustomNavigationController, animated: Bool = false) {
+    /*final*/ public func focus(navigationController: AnyCustomNavigationController, animated: Bool = false) {
         
         // First present navigation controller
         if _presented {
@@ -54,7 +54,7 @@ class AbstractInterfaceController : AbstractDisposableHolder, InterfaceControlle
         self.currentNavigationController = navigationController
     }
     
-    /*final*/ func takeControlOverPresentation(animated animated: Bool) throws {
+    /*final*/ public func takeControlOverPresentation(animated animated: Bool) throws {
         
         guard case false = _presented else {
             throw InterfaceControllerError.AlreadyPresented
@@ -76,27 +76,27 @@ class AbstractInterfaceController : AbstractDisposableHolder, InterfaceControlle
     
     // MARK: Internal
     
-    internal func present() {
+    public func present() {
         _presented = true
     }
     
-    internal func configureInterfaceTransitionHandlers() {
+    public func configureInterfaceTransitionHandlers() {
         // Nothing here, override by subclasses
     }
     
-    internal func presentNavigationController(navigationController: AnyCustomNavigationController, animated: Bool) {
+    public func presentNavigationController(navigationController: AnyCustomNavigationController, animated: Bool) {
         window.rootViewController = navigationController.viewController()
     }
     
     // MARK: Modal controller
 
-    internal func presentModalController(
+    public func presentModalController(
         viewController: UIViewController,
         animated: Bool = true) {
         self.presentModalController(viewController, animated: animated, modalControllerPresenterOverride: nil, modalTransitionStyle: nil, completion: nil)
     }
     
-    internal func presentModalController(
+    public func presentModalController(
         viewController: UIViewController,
         animated: Bool = true,
         modalControllerPresenterOverride: UIViewController?,
@@ -117,11 +117,11 @@ class AbstractInterfaceController : AbstractDisposableHolder, InterfaceControlle
         }
     }
     
-    internal func dismissModalController(animated: Bool = true) {
+    public func dismissModalController(animated: Bool = true) {
         dismissModalController(animated, completion: nil)
     }
 
-    internal func dismissModalController(animated: Bool = true, completion: (() -> ())?) {
+    public func dismissModalController(animated: Bool = true, completion: (() -> ())?) {
         let controllerPresenter = modalControllerPresenter
         controllerPresenter?.dismissViewControllerAnimated(animated) {
             if self.modalControllerPresenter == controllerPresenter {
@@ -131,7 +131,7 @@ class AbstractInterfaceController : AbstractDisposableHolder, InterfaceControlle
         }
     }
     
-    internal func _modalControllerPresenter() -> UIViewController? {
+    public func _modalControllerPresenter() -> UIViewController? {
         return currentNavigationController?.viewController()
     }
 }
@@ -140,7 +140,7 @@ class AbstractInterfaceController : AbstractDisposableHolder, InterfaceControlle
 
 extension AbstractInterfaceController {
 
-    internal func presentModalController(
+    public func presentModalController(
         viewController: UIViewController,
         animated: Bool,
         transitioning: UIViewControllerTransitioningDelegate?) {
@@ -161,7 +161,7 @@ extension AbstractInterfaceController {
 
     }
 
-    internal func dismissModalController(
+    public func dismissModalController(
         animated: Bool,
         transitioning: UIViewControllerTransitioningDelegate?) {
 
@@ -185,7 +185,7 @@ extension AbstractInterfaceController {
 
 // MARK: Interface controller error
 
-enum InterfaceControllerError : ErrorType {
+public enum InterfaceControllerError : ErrorType {
     case MissingRepresentation
     case NotInControl
     case AlreadyPresented

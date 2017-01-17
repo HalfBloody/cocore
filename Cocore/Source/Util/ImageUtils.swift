@@ -10,7 +10,7 @@ import Foundation
 
 extension UIImage {
 
-    func scaleImage(scale: Double) -> UIImage {
+    public func scaleImage(scale: Double) -> UIImage {
         let scale = CGFloat(scale)
 
         let newWidth = CGFloat(ceilf(Float(size.width * scale)))
@@ -23,7 +23,7 @@ extension UIImage {
         return scaledImage
     }
 
-    func resizeFill(resize: CGSize) -> UIImage {
+    public func resizeFill(resize: CGSize) -> UIImage {
         if size.width > size.height {
             return resizeByHeight(resize.height)
         } else {
@@ -31,7 +31,7 @@ extension UIImage {
         }
     }
 
-    func resizeByWidth(newWidth: CGFloat) -> UIImage {
+    public func resizeByWidth(newWidth: CGFloat) -> UIImage {
         let scale = newWidth / size.width
         let newHeight = size.height * scale
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
@@ -42,7 +42,7 @@ extension UIImage {
         return newImage
     }
 
-    func resizeByHeight(newHeight: CGFloat) -> UIImage {
+    public func resizeByHeight(newHeight: CGFloat) -> UIImage {
         let scale = newHeight / size.height
         let newWidth = size.width * scale
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))

@@ -8,33 +8,33 @@
 
 import Foundation
 
-class CollectionTableModelDataSource<M> : TableModelDataSource {
+public class CollectionTableModelDataSource<M> : TableModelDataSource {
     
-    var models: [[M]]
-    var viewIdentifier: String
+    public /*internal(set) */var models: [[M]]
+    public /*internal(set) */var viewIdentifier: String
     
-    init(models: [[M]], viewIdentifier: String) {
+    public init(models: [[M]], viewIdentifier: String) {
         self.models = models
         self.viewIdentifier = viewIdentifier
     }
     
-    func numberOfSections() -> Int {
+    public func numberOfSections() -> Int {
         return self.models.count
     }
     
-    func numberOfRowsInSection(section: Int)  -> Int {
+    public func numberOfRowsInSection(section: Int)  -> Int {
         return self.models[section].count
     }
     
-    func modelForIndexPath(indexPath: NSIndexPath)  -> M {
+    public func modelForIndexPath(indexPath: NSIndexPath)  -> M {
         return self.models[indexPath.section][indexPath.row]
     }
     
-    func viewModelForIndexPath(indexPath: NSIndexPath)  -> ViewModel<M> {
+    public func viewModelForIndexPath(indexPath: NSIndexPath)  -> ViewModel<M> {
         return ViewModel(model: modelForIndexPath(indexPath))
     }
     
-    func viewIdentifierForIndexPath(indexPath: NSIndexPath)  -> String {
+    public func viewIdentifierForIndexPath(indexPath: NSIndexPath)  -> String {
         return viewIdentifier
     }
     
@@ -46,5 +46,5 @@ class CollectionTableModelDataSource<M> : TableModelDataSource {
 }
 
 extension CollectionTableModelDataSource : SequenceType {
-    typealias Generator = AnyGenerator<(Int, NSIndexPath)>
+    public typealias Generator = AnyGenerator<(Int, NSIndexPath)>
 }

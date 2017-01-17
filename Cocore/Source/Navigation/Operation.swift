@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 // MARK: Abstract operation state machine conductor
 
-class OperationStateMachineConductor<T, E: ErrorType> : AbstractStateMachineConductor<GenericOperationState<T, E>, GenericOperationEvent<T, E>> {
+public class OperationStateMachineConductor<T, E: ErrorType> : AbstractStateMachineConductor<GenericOperationState<T, E>, GenericOperationEvent<T, E>> {
     
     typealias OperationStateType = GenericOperationState<T, E>
     typealias OperationResultType = Result<T, E>
@@ -24,7 +24,7 @@ class OperationStateMachineConductor<T, E: ErrorType> : AbstractStateMachineCond
     var resultsMapping: [T] -> T = { results in results.last! }
     
     // Initialize state machine with .Idle state
-    init() {
+    public init() {
         super.init(initialState: .Idle)
         
         // Only eventless transition supported is to .IntegrityError
@@ -133,15 +133,15 @@ class OperationStateMachineConductor<T, E: ErrorType> : AbstractStateMachineCond
 
 // MARK: Abstract operation with input / error types
 
-class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, OperationType, SwiftState.Disposable, DisposableHolder {
+public class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, OperationType, SwiftState.Disposable, DisposableHolder {
     
     private var signalProducer: SignalProducer<O, E>?
     
     // Disposables
     private var _signalDisposable: ReactiveCocoa.Disposable?
-    var disposables = [ AnyDisposable<SwiftState.ActionDisposable> ]()
+    public var disposables = [ AnyDisposable<SwiftState.ActionDisposable> ]()
     
-    init(signalProducer: SignalProducer<O, E>) {
+    public init(signalProducer: SignalProducer<O, E>) {
         
         // Super inits operation state machine with .Idle state
         super.init()
@@ -166,14 +166,14 @@ class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, Operati
     
     // MARK: Disposable
     
-    var disposed: Bool {
+    public var disposed: Bool {
         get {
             // self allowed for disposal only when signla disposable is not disposed
             return _signalDisposable?.disposed ?? true
         }
     }
     
-    func dispose() {
+    public func dispose() {
         if !disposed {
             _signalDisposable?.dispose()
             _disposeHandlers()
@@ -188,27 +188,27 @@ class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, Operati
      */
     
     // Operation is started
-    func progressStarted(handler: () -> ()) {
+    public func progressStarted(handler: () -> ()) {
         self << _progressStarted(handler)
     }
     
     // Operation is done
-    func done(handler: (O) -> ()) {
+    public func done(handler: (O) -> ()) {
         self << _done(handler)
     }
     
     // Operation done with an error
-    func next(handler: (O) -> ()) {
+    public func next(handler: (O) -> ()) {
         self << _next(handler)
     }
     
     // Operation done with an error
-    func error(handler: (E) -> ()) {
+    public func error(handler: (E) -> ()) {
         self << _error(handler)
     }
     
     // Operation cancelled
-    func cancelled(handler: () -> ()) {
+    public func cancelled(handler: () -> ()) {
         self << _cancelled(handler)
     }
     
@@ -217,13 +217,13 @@ class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, Operati
 extension Operation : OperationControlType {
     
     /// Start opoeration
-    func start() -> ReactiveCocoa.Disposable {
+    public func start() -> ReactiveCocoa.Disposable {
         _signalDisposable = signalProducer?.start()
         return _signalDisposable!
     }
     
     /// Cancel operation
-    func cancel() {
+    public func cancel() {
         self <~! .Cancel
     }
 }

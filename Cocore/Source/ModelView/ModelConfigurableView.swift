@@ -9,23 +9,23 @@
 import Foundation
 import UIKit
 
-class ModelConfigurableView : UIView, ViewModelConfigurable {
+public class ModelConfigurableView : UIView, ViewModelConfigurable {
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
+    public func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
         // Nothing here
     }
 
     // Multiline labels
-    func multilineLabels() -> [UILabel?] {
+    public func multilineLabels() -> [UILabel?] {
         return [ ]
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         
         for case .Some(let multilineLabel) in multilineLabels() {
             multilineLabel.preferredMaxLayoutWidth = multilineLabel.frame.size.width    

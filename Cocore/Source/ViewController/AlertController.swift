@@ -9,27 +9,38 @@
 import Foundation
 import UIKit
 
-protocol AlertControllerDelegate {
+public protocol AlertControllerDelegate {
     func alertControllerButtonClicked(alertController: AlertController, buttonIndex: Int)
     func alertControllerAlternativeButtonClicked(alertController: AlertController)
     func alertControllerDismissed(alertController: AlertController)
 }
 
-struct AlertButtonConfiguration {
-    let item: AlertController.AlertItem
-    let title: String
-    let color: UIColor?
-    let textColor: UIColor?
-    let fontSize: FontSize?
-    let iconImage: (UIImage, Bool)?
-    let cornerRadius: CGFloat?
-    let textAlignment: NSTextAlignment?
+public struct AlertButtonConfiguration {
+    public let item: AlertController.AlertItem
+    public let title: String
+    public let color: UIColor?
+    public let textColor: UIColor?
+    public let fontSize: FontSize?
+    public let iconImage: (UIImage, Bool)?
+    public let cornerRadius: CGFloat?
+    public let textAlignment: NSTextAlignment?
+
+    public init(item: AlertController.AlertItem, title: String, color: UIColor?, textColor: UIColor?, fontSize: FontSize?, iconImage: (UIImage, Bool)?, cornerRadius: CGFloat, textAlignment: NSTextAlignment?) {
+        self.item = item
+        self.title = title
+        self.color = color
+        self.textColor = textColor
+        self.fontSize = fontSize
+        self.iconImage = iconImage
+        self.cornerRadius = cornerRadius
+        self.textAlignment = textAlignment
+    }
 }
 
-class AlertController : TableViewAbstractModelController {
+public class AlertController : TableViewAbstractModelController {
     
     var cellHeights = Dictionary<NSIndexPath,CGFloat>()
-    var shouldCenterVertically = true
+    public var shouldCenterVertically = true
     
     @IBOutlet var dismissButton: UIButton?
     @IBOutlet var backgroundView: UIImageView?
@@ -43,9 +54,9 @@ class AlertController : TableViewAbstractModelController {
     
     var headerImageViewTopPadding: CGFloat = CGFloat(0.0)
     @IBOutlet var headerImageViewTopConstraint: NSLayoutConstraint?
-    var alertDelegate: AlertControllerDelegate?
+    public var alertDelegate: AlertControllerDelegate?
     
-    enum AlertItem: String { 
+    public enum AlertItem: String {
         case Margin = "Alert_Margin"
         case Button = "Alert_Button"
         case ButtonAccent = "Alert_ButtonAccent"
@@ -66,7 +77,7 @@ class AlertController : TableViewAbstractModelController {
     
     // Init
     
-    init(_ headerImage: UIImage?, 
+    public init(_ headerImage: UIImage?,
         buttonTitles: [AlertButtonConfiguration], 
         cancelButtonTitle: String?, 
         dismissAllowed: Bool,
@@ -156,19 +167,19 @@ class AlertController : TableViewAbstractModelController {
             }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // Buttons
     
-    func selectAllButtons(selected selected: Bool) {
+    public func selectAllButtons(selected selected: Bool) {
         for buttonIndex in 0..<buttons.count {
             selectButton(buttonIndex, selected: selected)
         }
     }
     
-    func selectButton(index: Int, selected: Bool) {        
+    public func selectButton(index: Int, selected: Bool) {
         if let button = buttons[index].button {            
             if selected {
                 button.selectionEnabled = selected
@@ -186,7 +197,7 @@ class AlertController : TableViewAbstractModelController {
     
     // View
     
-    override func viewDidLoad() {        
+    override public func viewDidLoad() {        
         super.viewDidLoad()
         
         // Header image view top offset
@@ -209,7 +220,7 @@ class AlertController : TableViewAbstractModelController {
         
     // Table View Delegate
         
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
             case (headerSection!.section, 0): return self.shouldCenterVertically ? UIApplication.sharedApplication().statusBarFrame.size.height : 0.0
             case (headerSection!.section, 1): return (headerImage?.size.height ?? 0.0) / 2.0
@@ -230,7 +241,7 @@ class AlertController : TableViewAbstractModelController {
         
     // Decoration
     
-    override func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
+    override public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
         switch (indexPath.section, indexPath.row) {
             default: return super.decoratorForIndexPath(indexPath)
         }
@@ -271,7 +282,7 @@ class AlertController : TableViewAbstractModelController {
     
     // MARK: Table view
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         super.tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
         
         cellHeights[indexPath] = cell.frame.size.height

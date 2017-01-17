@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class StaticHeightReusableModelViewDataSource : ReusableModelViewDataSource {
+public class StaticHeightReusableModelViewDataSource : ReusableModelViewDataSource {
     
-    var configurableViewDummy: ModelConfigurableView?
+    public var configurableViewDummy: ModelConfigurableView?
     
-    override func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
+    override public func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
         let vmc = super.viewModelConfigurableForViewIdentifier(viewIdentifier, indexPath: indexPath)
         if case .None = configurableViewDummy {
             configurableViewDummy = vmc
@@ -21,16 +21,22 @@ class StaticHeightReusableModelViewDataSource : ReusableModelViewDataSource {
         return vmc
     }
     
-    override func heightChange(indexPath: NSIndexPath) -> CGFloat {
+    override public func heightChange(indexPath: NSIndexPath) -> CGFloat {
         return 0.0
     }
 }
 
-class ReusableModelViewDataSource : ModelViewDataSource {
+public class ReusableModelViewDataSource : ModelViewDataSource {
+
+    public init() {
+        // Nothing here
+    }
+
+    // MARK: ----
     
-    private lazy var heightChange = [NSIndexPath: CGFloat]()
+    public lazy var heightChange = [NSIndexPath: CGFloat]()
     
-    func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
+    public func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
         
         if case .None = nibCache[viewIdentifier] {
             nibCache[viewIdentifier] = UINib(nibName: viewIdentifier, bundle: nil)
@@ -39,31 +45,31 @@ class ReusableModelViewDataSource : ModelViewDataSource {
         return nibCache[viewIdentifier]!.instantiateWithOwner(nil, options: nil).first as! ModelConfigurableView
     }
     
-    func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
+    public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {
         return BasicDecorator()
     }
     
     // MARK: Nib caching
     
-    var nibCache = [String: UINib]()
+    public var nibCache = [String: UINib]()
     
     // Height change
     
-    func heightChange(indexPath: NSIndexPath) -> CGFloat? {
+    public func heightChange(indexPath: NSIndexPath) -> CGFloat? {
         return heightChange[indexPath]
     }
     
-    func setHeightChange(change: CGFloat, indexPath: NSIndexPath) {
+    public func setHeightChange(change: CGFloat, indexPath: NSIndexPath) {
         heightChange[indexPath] = change
     }
     
-    func clearHeightChange(indexPath: NSIndexPath) {
+    public func clearHeightChange(indexPath: NSIndexPath) {
         heightChange[indexPath] = nil
     }
     
     // Insert / delete rows
     
-    func insertRowAtIndexPath(indexPath: NSIndexPath) {
+    public func insertRowAtIndexPath(indexPath: NSIndexPath) {
         
         let oldHeightChange = heightChange
         heightChange.removeAll()
@@ -102,7 +108,7 @@ class ReusableModelViewDataSource : ModelViewDataSource {
         heightChange = newHeightChange
     }
     
-    func deleteRowAtIndexPath(indexPath: NSIndexPath) {
+    public func deleteRowAtIndexPath(indexPath: NSIndexPath) {
        
         var newHeightChange = [NSIndexPath : CGFloat]()
         for (ip, hc) in heightChange {

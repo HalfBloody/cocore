@@ -13,10 +13,10 @@ import ReactiveCocoa
 import RealmSwift
 import Raven
 
-typealias HTTPParameters = (path: CustomStringConvertible?, params: Dictionary<String, AnyObject>?)
+public typealias HTTPParameters = (path: CustomStringConvertible?, params: Dictionary<String, AnyObject>?)
 
 // Foreground endpoint
-class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
+public class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
     
     // URL session manager
     var manager: Manager
@@ -28,7 +28,7 @@ class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
     var path: String?
     
     // Authorization token
-    var authToken: String?
+    public var authToken: String?
     
     // Full URL to endpoint
     var url: NSURL {
@@ -41,7 +41,7 @@ class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
     // Timeout to return NotAvailable error in seconds
     let timeout: NSTimeInterval = 10.0
     
-    init(baseUrl: NSURL, path: String?) {
+    public init(baseUrl: NSURL, path: String?) {
         self.baseUrl = baseUrl
         self.path = path
         self.manager = Manager.sharedInstance
@@ -49,7 +49,7 @@ class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
 
     // MARK: EndpointRequestConstructorType
 
-    func constructParameters<M: MessageType>(input: M, method: Alamofire.Method) throws -> HTTPParameters? {
+    public func constructParameters<M: MessageType>(input: M, method: Alamofire.Method) throws -> HTTPParameters? {
 
         /*
          guard let stringConvertible = input.head() as? CustomStringConvertible else {
@@ -94,7 +94,7 @@ class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
         return parameters
     }
 
-    func constructRequest(parameters: HTTPParameters?, method: Alamofire.Method) throws -> Alamofire.Request {
+    public func constructRequest(parameters: HTTPParameters?, method: Alamofire.Method) throws -> Alamofire.Request {
 
         // Target endpoint parameters.path for .GET and .POST methods
         var url = self.url
@@ -178,8 +178,8 @@ class HTTPEndpoint : EndpointType, EndpointRequestConstructorType {
 }
 
 // Background endpoint
-class HTTPEndpointBackground : HTTPEndpoint {
-    override init(baseUrl: NSURL, path: String?) {
+public class HTTPEndpointBackground : HTTPEndpoint {
+    public override init(baseUrl: NSURL, path: String?) {
         super.init(baseUrl: baseUrl, path: path)
         
         // Override session manager

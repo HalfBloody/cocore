@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 // MARK: Operation type
 
-protocol OperationType {
+public protocol OperationType {
     
     associatedtype OType
     associatedtype EType: ErrorType
@@ -22,14 +22,14 @@ protocol OperationType {
 
 // MARK: Operation control type
 
-protocol OperationControlType {
+public protocol OperationControlType {
     func start() -> ReactiveCocoa.Disposable
     func cancel()
 }
 
 // MARK: OperationError
 
-enum OperationError : ErrorType {
+public enum OperationError : ErrorType {
     case InternalError
     case ProgramCancelled
     case WrongConfiguration(String)

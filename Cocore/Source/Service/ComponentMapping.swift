@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 // Component type protocol
-protocol ComponentType {
+public protocol ComponentType {
     associatedtype ObjectType
     func componentMapping() -> Map -> ()
 }
@@ -18,7 +18,7 @@ protocol ComponentType {
 // Make array of components mappable itself
 extension Array where Element: ComponentType {    
     // Map each of array's component
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         for component in self {
             component.componentMapping()(map)
         }

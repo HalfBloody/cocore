@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 import ReactiveCocoa
 
-protocol Service {
+public protocol Service {
     init(baseURL: NSURL)
 }
 
-protocol Authorized {
+public protocol Authorized {
     var authToken: String? { get set }
 }
 
@@ -22,13 +22,13 @@ protocol Authorized {
 
 extension Service {
     
-    func mockData<T: Mappable>(mockName: String, keypath: String) -> [T] {
+    public func mockData<T: Mappable>(mockName: String, keypath: String) -> [T] {
         let mockData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(mockName, ofType: "json")!)!
         let jsonString = try! NSJSONSerialization.JSONObjectWithData(mockData, options: .AllowFragments)
         return Mapper<T>().mapArray(jsonString[keypath])!
     }
     
-    func mockDataSignal<T: Mappable>(mockName: String, keypath: String) -> SignalProducer<[T], EndpointError> {
+    public func mockDataSignal<T: Mappable>(mockName: String, keypath: String) -> SignalProducer<[T], EndpointError> {
         return SignalProducer(value: mockData(mockName, keypath: keypath))
     }
 }

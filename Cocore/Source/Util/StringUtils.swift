@@ -54,7 +54,7 @@ extension String {
 
 extension TTTAttributedLabel {
     
-    func setupHtml(string: String, style: String) {
+    public func setupHtml(string: String, style: String) {
         let htmlString = string.htmlString(style: style)
         if let htmlAttributedString = htmlString.htmlAttributedString() {
             
@@ -101,7 +101,7 @@ extension TTTAttributedLabel {
 }
 
 extension String {
-    func trimmedNewlinesAndTabsString() -> String {
+    public func trimmedNewlinesAndTabsString() -> String {
         let characterSet = NSMutableCharacterSet.newlineCharacterSet()
         characterSet.addCharactersInString("\t")
         return self.componentsSeparatedByCharactersInSet(characterSet).joinWithSeparator("")
@@ -109,7 +109,7 @@ extension String {
 }
 
 extension String {
-    static func intFromHexString(hexStr: String) -> UInt32 {
+    public static func intFromHexString(hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
         let scanner: NSScanner = NSScanner(string: hexStr)
         scanner.charactersToBeSkipped = NSCharacterSet(charactersInString: "#")

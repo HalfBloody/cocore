@@ -11,13 +11,17 @@ import RealmSwift
 import ObjectMapper
 import Reachability
 
-class ListTransform<T:RealmSwift.Object where T:Mappable> : TransformType {
-    typealias Object = List<T>
-    typealias JSON = Array<AnyObject>
+public class ListTransform<T:RealmSwift.Object where T:Mappable> : TransformType {
+    public typealias Object = List<T>
+    public typealias JSON = Array<AnyObject>
     
-    let mapper = Mapper<T>()
+    public let mapper = Mapper<T>()
+
+    public init() {
+        // Nothing here
+    }
     
-    func transformFromJSON(value: AnyObject?) -> List<T>? {
+    public func transformFromJSON(value: AnyObject?) -> List<T>? {
         let result = List<T>()
         if let tempArr = value as! Array<AnyObject>? {
             for entry in tempArr {
@@ -31,7 +35,7 @@ class ListTransform<T:RealmSwift.Object where T:Mappable> : TransformType {
     
     // transformToJson was replaced with a solution by @zendobk from https://gist.github.com/zendobk/80b16eb74524a1674871
     // to avoid confusing future visitors of this gist. Thanks to @marksbren for pointing this out (see comments of this gist)
-    func transformToJSON(value: Object?) -> JSON? {
+    public func transformToJSON(value: Object?) -> JSON? {
         var results = [AnyObject]()
         if let value = value {
             for obj in value {

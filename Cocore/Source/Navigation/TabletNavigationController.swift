@@ -14,7 +14,7 @@ import UIKit
  * About:
  *  - details controller should always be UINavigationController
  */
-class TabletNavigationController : UISplitViewController, CustomNavigationController {
+public class TabletNavigationController : UISplitViewController, CustomNavigationController {
     
     /// Navigation controller for details on split view controller
     let detailsNavigationController = UINavigationController()
@@ -32,7 +32,7 @@ class TabletNavigationController : UISplitViewController, CustomNavigationContro
         }
     }
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil) // UISplitViewController's designated init
         
         // Max column width
@@ -42,27 +42,27 @@ class TabletNavigationController : UISplitViewController, CustomNavigationContro
         mainOnly = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Background color
         view.backgroundColor = Colors.background
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         // Update display mode
         self._updatePreferredDisplayMode()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         // FIXME: Without calling this two lines primary column's controller doesn't want to fill space given to it on iOS 8
@@ -72,13 +72,13 @@ class TabletNavigationController : UISplitViewController, CustomNavigationContro
     
     // MARK: View controller
     
-    func viewController() -> UIViewController {
+    public func viewController() -> UIViewController {
         return self
     }
     
     // MARK: Push / pop navigation
     
-    func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
+    public func pushViewController(viewController: UIViewController, animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) {
         
         // Present details on UISplitViewController if navigation stack was empty before
         if viewControllers.count == 0 {
@@ -103,7 +103,7 @@ class TabletNavigationController : UISplitViewController, CustomNavigationContro
         self._updatePreferredDisplayMode()
     }
     
-    func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
+    public func popViewControllerAnimated(animated: Bool, transitioning: UIViewControllerAnimatedTransitioning?) -> UIViewController? {
         
         // If details navigation controller contains only last controller hide detail controller on UISplitVIewController
         // completely, otherwise only pop last controller from detail's navigation stack
@@ -120,7 +120,7 @@ class TabletNavigationController : UISplitViewController, CustomNavigationContro
         return result
     }
     
-    func popToRootViewControllerAnimated(animated: Bool) -> [UIViewController]? {
+    public func popToRootViewControllerAnimated(animated: Bool) -> [UIViewController]? {
         
         // Don't pop is split view controller is not configured properly yet
         guard case let cc = viewControllers.count

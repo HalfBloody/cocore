@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class AdjustableHeaderTableAbstractModelController : TableViewAbstractModelController {
+public class AdjustableHeaderTableAbstractModelController : TableViewAbstractModelController {
     
     var topBackgroundView: UIView!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Don't clip table view
@@ -34,7 +34,7 @@ class AdjustableHeaderTableAbstractModelController : TableViewAbstractModelContr
         view!.insertSubview(topBackgroundView, aboveSubview: tableView!)
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(scrollView: UIScrollView) {
        
         // Top background view height
         if case let offset = scrollView.contentOffset.y

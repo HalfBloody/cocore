@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewModelConfigurable {
+public protocol ViewModelConfigurable {
     associatedtype ModelType
     func configureWithViewModel(viewModel: ViewModel<ModelType>)
 }

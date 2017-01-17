@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class AlertTransitioning : NSObject, UIViewControllerTransitioningDelegate { 
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+public class AlertTransitioning : NSObject, UIViewControllerTransitioningDelegate { 
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AlertAnimator(presenting: true)
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AlertAnimator(presenting: false)
     }
 }

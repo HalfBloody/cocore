@@ -11,16 +11,16 @@ import UIKit
 
 // MARK: Type
 
-enum ZeroViewType {
+public enum ZeroViewType {
     case Empty(title: String, text: String)
     case Lock(title: String, text: String, boldText: String, buttonTitle: String, buttonHandler: ActionHandler)
 }
 
-class ZeroView : ModelConfigurableView {
+public class ZeroView : ModelConfigurableView {
     
     // MARK: Handler
     
-    var buttonHandler: ActionHandler?
+    public var buttonHandler: ActionHandler?
     
     // MARK: -
     
@@ -31,7 +31,7 @@ class ZeroView : ModelConfigurableView {
         
     // MARK: Construction
     
-    class func construct(type: ZeroViewType) -> ZeroView {
+    public class func construct(type: ZeroViewType) -> ZeroView {
 
         let zeroView: ZeroView
         switch type {
@@ -75,7 +75,7 @@ class ZeroView : ModelConfigurableView {
     
     // MARK: Layout
         
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -98,12 +98,12 @@ class ZeroView : ModelConfigurableView {
         textLabel?.font = UIFont.customFont(.RamblaRegular, .Larger)        
     }
     
-    override func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
+    override public func configureWithViewModel(viewModel: ViewModel<AnyObject>) {
         // Nothing here
     }
     
     // Multiline labels
-    override func multilineLabels() -> [UILabel?] {
+    override public func multilineLabels() -> [UILabel?] {
         return [
             textLabel
         ]

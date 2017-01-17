@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class GrayButton : UIButton {
+public class GrayButton : UIButton {
     
     var originalImage: UIImage?
             
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Don't adjust image when highlighted
@@ -35,7 +35,7 @@ class GrayButton : UIButton {
         enabled = true
     }
     
-    dynamic var showShadow: Bool = true {
+    dynamic public var showShadow: Bool = true {
         didSet {
             if showShadow {
                 layer.shadowRadius = 8.0
@@ -52,14 +52,14 @@ class GrayButton : UIButton {
     
     // MARK: 
  
-    override var highlighted: Bool {
+    override public var highlighted: Bool {
         didSet {
             backgroundColor = highlighted ? UIColor(rgb: 0x98abb9, alphaVal: 1.0) : UIColor(rgb: 0xb9cede, alphaVal: 1.0)
             showShadow = !highlighted
         }
     }    
     
-    override var enabled: Bool {
+    override public var enabled: Bool {
         didSet {
             showShadow = enabled
             backgroundColor = enabled ? UIColor(rgb: 0xb9cede, alphaVal: 1.0) : UIColor(rgb: 0xbed5e4, alphaVal: 1.0)
