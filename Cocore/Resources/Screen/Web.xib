@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebController" customModule="Cocore" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="BdI-uL-Ubg" id="HGb-eE-fKL"/>
+                <outlet property="webView" destination="rlU-Oe-01i" id="lxt-sy-n5p"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="BdI-uL-Ubg">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlU-Oe-01i" userLabel="_webView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="rlU-Oe-01i" firstAttribute="leading" secondItem="BdI-uL-Ubg" secondAttribute="leading" id="615-QI-BjI"/>
+                <constraint firstAttribute="bottom" secondItem="rlU-Oe-01i" secondAttribute="bottom" id="G0k-qU-Mt3"/>
+                <constraint firstAttribute="trailing" secondItem="rlU-Oe-01i" secondAttribute="trailing" id="R31-SO-n4U"/>
+                <constraint firstItem="rlU-Oe-01i" firstAttribute="top" secondItem="BdI-uL-Ubg" secondAttribute="top" id="YQF-ne-gua"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="861" y="598"/>
+        </view>
+    </objects>
+</document>

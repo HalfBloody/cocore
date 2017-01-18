@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="SinglelineFormFieldView" customModule="PocketFlip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="form_disclosure" translatesAutoresizingMaskIntoConstraints="NO" id="GM3-0U-gN6">
+                    <rect key="frame" x="268" y="15" width="8" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="2v6-Px-CJI"/>
+                        <constraint firstAttribute="height" constant="13" id="MQX-7H-Ow8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NP-eW-U2g" userLabel="_nameLabel">
+                    <rect key="frame" x="45" y="12" width="215" height="21"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ulQ-Hj-QtT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="form_icn_address" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-Cz-578" userLabel="_imageView">
+                    <rect key="frame" x="12" y="11" width="20" height="20"/>
+                    <color key="backgroundColor" red="0.0" green="0.70196078429999997" blue="0.89019607840000003" alpha="0.25" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="dh1-YP-llw"/>
+                        <constraint firstAttribute="width" constant="20" id="otL-Pf-xlz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.70196078429999997" blue="0.89019607840000003" alpha="0.25" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="3LA-Cz-578" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-1" id="B5d-tv-v6J"/>
+                <constraint firstItem="3NP-eW-U2g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FJz-8t-XCj"/>
+                <constraint firstItem="GM3-0U-gN6" firstAttribute="leading" secondItem="3NP-eW-U2g" secondAttribute="trailing" constant="8" id="GES-dv-MqI"/>
+                <constraint firstItem="GM3-0U-gN6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JZt-PA-PYy"/>
+                <constraint firstItem="3NP-eW-U2g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="cL6-kc-lZv"/>
+                <constraint firstItem="3LA-Cz-578" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="cVx-QF-YY6"/>
+                <constraint firstAttribute="trailing" secondItem="GM3-0U-gN6" secondAttribute="trailing" constant="12" id="gPs-1w-R5p"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="3LA-Cz-578" id="3jl-UL-aLk"/>
+                <outlet property="nameLabel" destination="3NP-eW-U2g" id="veO-wA-l8r"/>
+            </connections>
+            <point key="canvasLocation" x="327" y="283"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="form_disclosure" width="8" height="13"/>
+        <image name="form_icn_address" width="14" height="19"/>
+    </resources>
+</document>

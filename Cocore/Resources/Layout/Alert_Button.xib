@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertView" customModule="Cocore">
+            <rect key="frame" x="0.0" y="0.0" width="288" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyv-Qg-XwZ" userLabel="_button" customClass="CustomButton" customModule="Cocore">
+                    <rect key="frame" x="20" y="8" width="248" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="jcU-gV-SfM"/>
+                    </constraints>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timothy Dalton" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-vT-bx9" userLabel="_label">
+                    <rect key="frame" x="40" y="25" width="208" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="ee5-0R-hQa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.70196078429999997" blue="0.89019607840000003" alpha="0.25" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="xyv-Qg-XwZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="4sU-0S-7jm"/>
+                <constraint firstItem="xyv-Qg-XwZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ELE-Hp-NJ6"/>
+                <constraint firstItem="y0b-vT-bx9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="ntO-I5-Mzo"/>
+                <constraint firstItem="y0b-vT-bx9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="4.5" id="qEF-eJ-R01"/>
+                <constraint firstAttribute="trailing" secondItem="xyv-Qg-XwZ" secondAttribute="trailing" constant="20" id="siR-Hy-5Cx"/>
+                <constraint firstAttribute="trailing" secondItem="y0b-vT-bx9" secondAttribute="trailing" constant="40" id="u1E-Vf-1YM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="xyv-Qg-XwZ" id="gel-9R-PxS"/>
+                <outlet property="label" destination="y0b-vT-bx9" id="OeX-1F-l8A"/>
+            </connections>
+            <point key="canvasLocation" x="573" y="383"/>
+        </view>
+    </objects>
+</document>
