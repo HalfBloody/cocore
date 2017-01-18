@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.11"
+  s.version      = "0.0.12"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = "Cocore/Vendor/Crashlytics.framework", "Cocore/Vendor/Fabric.framework", "Cocore/Vendor/OneSignal.framework", "Cocore/Vendor/UXCam.framework"
   s.preserve_paths = 'Cocore/Vendor/*.framework'
   s.resource = "Cocore/Vendor/Crashlytics.framework", "Cocore/Vendor/Fabric.framework", "Cocore/Vendor/OneSignal.framework", "Cocore/Vendor/UXCam.framework"
-  s.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor"', 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor/Crashlytics.framework/Headers'}
+  s.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor"', 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor/Crashlytics.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/Fabric.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/OneSignal.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/UXCam.framework/Headers"'}
 
   # Main application core
   #   > Cocore
