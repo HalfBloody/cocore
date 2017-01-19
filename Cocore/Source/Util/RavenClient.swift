@@ -8,7 +8,15 @@
 import Foundation
 import Raven
 
-extension RavenClient {
+public protocol RavenClientFabric {
+    func ravenClient() -> RavenClientProtocol
+}
+
+public protocol RavenClientProtocol {
+    func message(level: RavenClientCocore.RLogLevel, text: String, data: [String: AnyObject]?)
+}
+
+public class RavenClientCocore : RavenClient, RavenClientProtocol {
     
     public enum RLogLevel {
         case Info
@@ -17,28 +25,19 @@ extension RavenClient {
         case Fatal
     }
     
-    class func message(level: RLogLevel, text: String, data: [String: AnyObject]?) {
+    public func message(level: RLogLevel, text: String, data: [String: AnyObject]?) {
         
         // Log level
         let ravenLevel: RavenLogLevel
         switch level {
-        case RavenClient.RLogLevel.Info: ravenLevel = kRavenLogLevelDebugInfo
-        case RavenClient.RLogLevel.Warning: ravenLevel = kRavenLogLevelDebugWarning
-        case RavenClient.RLogLevel.Error: ravenLevel = kRavenLogLevelDebugError
-        case RavenClient.RLogLevel.Fatal: ravenLevel = kRavenLogLevelDebugFatal
+        case RavenClientCocore.RLogLevel.Info: ravenLevel = kRavenLogLevelDebugInfo
+        case RavenClientCocore.RLogLevel.Warning: ravenLevel = kRavenLogLevelDebugWarning
+        case RavenClientCocore.RLogLevel.Error: ravenLevel = kRavenLogLevelDebugError
+        case RavenClientCocore.RLogLevel.Fatal: ravenLevel = kRavenLogLevelDebugFatal
         }
         
         // Basic extras
         var extra = [String: AnyObject]()
-        
-        // Current user's IDFA
-        /* TODO: dependency injection
-        if let currentUser = UserModel.currentUser {
-            extra["user_id"] = currentUser.id
-            extra["user_idfa"] = currentUser.idfa
-            extra["user_credits"] = currentUser.credits
-        }
-         */
 
         // Append extra fro arguments
         if let data = data {
@@ -48,10 +47,9 @@ extension RavenClient {
         }
         
         // Message
-        RavenClient.sharedClient()
-            .captureMessage(text,
-                            level: ravenLevel,
-                            additionalExtra: extra,
-                            additionalTags: nil)
+        captureMessage(text,
+                       level: ravenLevel,
+                       additionalExtra: extra,
+                       additionalTags: nil)
     }
 }

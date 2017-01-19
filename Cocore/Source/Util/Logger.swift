@@ -173,8 +173,14 @@ public func DDLogError(@autoclosure message: () -> String,
 
 // MARK: Raven
 
-public func logRavenMessage(message: String, level: RavenClient.RLogLevel, publicData: [String: AnyObject]?) {
-    RavenClient.message(level, text: message, data: publicData)
+public func logRavenMessage(message: String, level: RavenClientCocore.RLogLevel, publicData: [String: AnyObject]?) {
+
+    guard let customRavenClient = UIApplication.sharedApplication().delegate as? RavenClientFabric else {
+        RavenClientCocore.sharedClient().message(level, text: message, data: publicData)
+        return
+    }
+
+    customRavenClient.ravenClient().message(level, text: message, data: publicData)
 }
 
 // MARK: Dictionary extension
@@ -252,7 +258,7 @@ extension String {
 
 // MARK: Dictionary extensions
 
-func += <K, V> (inout left: [K:V], right: [K:V]?) {
+public func += <K, V> (inout left: [K:V], right: [K:V]?) {
     
     guard let r = right else {
         return
