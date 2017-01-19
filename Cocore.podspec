@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.13"
+  s.version      = "0.0.14"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -108,7 +108,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+  s.resources = "Cocore/Resources/**/*.xib"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
