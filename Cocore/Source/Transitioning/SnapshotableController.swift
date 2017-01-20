@@ -14,6 +14,10 @@ public protocol SnapshotableController {
     func takeSnapshot() -> UIImage
 }
 
+public protocol SnapshotPreAdjustable {
+    func adjustBeforeSnapshoting()
+}
+
 private var xoAssociationKey: UInt8 = 0
 
 extension UIViewController: SnapshotableController { 
@@ -35,12 +39,12 @@ extension UIViewController: SnapshotableController {
             
             // Render controller's view
             if let nc = self as? UINavigationController {
-                nc.viewControllers.first?.view.layoutIfNeeded()
-                /* TODO: dependency injection
-                if let tlc = nc.viewControllers.first as? TaskListController {
-                    tlc.taskCategorySegmentedControl?.selectCell(tlc.taskCategorySegmentedControl?.selectedIndex() ?? 0, animate: false)
+                if let vc = nc.viewControllers.first {
+                    vc.view.layoutIfNeeded()
+                    if let vcp = vc as? SnapshotPreAdjustable {
+                        vcp.adjustBeforeSnapshoting()
+                    }
                 }
-                 */
                 view.layer.renderInContext(context)
             } else if let navigationController = navigationController {
                 navigationController.view.layer.renderInContext(context)
