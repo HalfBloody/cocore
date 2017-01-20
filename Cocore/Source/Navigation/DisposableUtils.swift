@@ -33,24 +33,24 @@ extension SwiftState.Disposable where Self: DisposableHolder {
     }
 }
 
-infix operator << { associativity left }
+infix operator <<| { associativity left }
 
-public func <<<T: DisposableHolder>(left: T, right: T.DType) {
+public func <<|<T: DisposableHolder>(left: T, right: T.DType) {
     let holder = left
     holder.disposables.append(right)
 }
 
-public func <<<T: DisposableHolder>(left: T, right: SwiftState.Disposable) {
+public func <<|<T: DisposableHolder>(left: T, right: SwiftState.Disposable) {
     
     // Currently only ActionDisposable is supported
     if right is SwiftState.ActionDisposable {
-        left << AnyDisposable(right as! SwiftState.ActionDisposable)
+        left <<| AnyDisposable(right as! SwiftState.ActionDisposable)
     }
 }
 
-public func <<<T: DisposableHolder>(left: T, right: [SwiftState.Disposable]) {
+public func <<|<T: DisposableHolder>(left: T, right: [SwiftState.Disposable]) {
     for disposable in right {
-        left << disposable
+        left <<| disposable
     }
 }
 

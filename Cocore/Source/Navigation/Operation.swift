@@ -189,27 +189,27 @@ public class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, 
     
     // Operation is started
     public func progressStarted(handler: () -> ()) {
-        self << _progressStarted(handler)
+        self <<| _progressStarted(handler)
     }
     
     // Operation is done
     public func done(handler: (O) -> ()) {
-        self << _done(handler)
+        self <<| _done(handler)
     }
     
     // Operation done with an error
     public func next(handler: (O) -> ()) {
-        self << _next(handler)
+        self <<| _next(handler)
     }
     
     // Operation done with an error
     public func error(handler: (E) -> ()) {
-        self << _error(handler)
+        self <<| _error(handler)
     }
     
     // Operation cancelled
     public func cancelled(handler: () -> ()) {
-        self << _cancelled(handler)
+        self <<| _cancelled(handler)
     }
     
 }

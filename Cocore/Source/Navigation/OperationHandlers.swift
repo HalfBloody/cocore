@@ -113,6 +113,6 @@ extension OperationType where EType == EndpointError {
 
 extension OperationType where EType == EndpointError, Self: DisposableHolder {
     func serverError(handler: (String) -> ()) {
-        self << _serverError(handler)
+        self <<| _serverError(handler)
     }
 }
