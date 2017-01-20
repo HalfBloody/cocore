@@ -28,6 +28,7 @@
 		B61759FA1E2F76BA0030620C /* TwoLineNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */; };
 		B66A4B041E31B187007DFAF6 /* NSBundle+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */; };
 		B66A4B061E31CF7A007DFAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */; };
+		B66A4B0E1E31F473007DFAF6 /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */; };
 		B67A35151E2C82240052549B /* Cocore.h in Headers */ = {isa = PBXBuildFile; fileRef = B67A35141E2C82240052549B /* Cocore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B67A351C1E2C82240052549B /* Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67A35111E2C82240052549B /* Cocore.framework */; };
 		B67A35211E2C82240052549B /* CocoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A35201E2C82240052549B /* CocoreTests.swift */; };
@@ -153,6 +154,7 @@
 		B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLineNavigationView.xib; sourceTree = "<group>"; };
 		B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Utils.swift"; sourceTree = "<group>"; };
 		B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationSettings.swift; path = Source/Helper/ApplicationSettings.swift; sourceTree = "<group>"; };
 		B67A35111E2C82240052549B /* Cocore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cocore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A35141E2C82240052549B /* Cocore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cocore.h; sourceTree = "<group>"; };
 		B67A35161E2C82240052549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		B61759CD1E2F76820030620C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B66A4B0C1E31F467007DFAF6 /* Helper */,
 				B67A36901E2DC7A20052549B /* Crashlytics */,
 				B67A36891E2CBF740052549B /* AppDelegate */,
 				B67A36831E2CBEC70052549B /* Style */,
@@ -364,6 +367,14 @@
 			);
 			name = View;
 			path = Resources/View;
+			sourceTree = "<group>";
+		};
+		B66A4B0C1E31F467007DFAF6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		B67A35071E2C82240052549B = {
@@ -842,6 +853,7 @@
 				B67A36921E2DC7B30052549B /* Logger+Crashlytics.swift in Sources */,
 				B67A365F1E2CAC540052549B /* FadeTransitioning.swift in Sources */,
 				B67A36721E2CAC540052549B /* GrayButton.swift in Sources */,
+				B66A4B0E1E31F473007DFAF6 /* ApplicationSettings.swift in Sources */,
 				B67A36491E2CAC540052549B /* OperatableState.swift in Sources */,
 				B67A36871E2CBEC70052549B /* FontSizes.swift in Sources */,
 				B67A36521E2CAC540052549B /* StateMachineConductor.swift in Sources */,
