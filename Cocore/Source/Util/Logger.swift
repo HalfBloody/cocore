@@ -283,9 +283,9 @@ extension DebugableContent {
 
 // MARK: Inject public data from DebuggableContent
 
-infix operator ^ { associativity left }
+infix operator ^| { associativity left }
 
-public func ^ (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
+public func ^| (left: [String: AnyObject], right: Any?) -> [String: AnyObject] {
     var dict = left
     if let debugable = right as? DebugableContent {
         dict += debugable.publicData()
