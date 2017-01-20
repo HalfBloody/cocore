@@ -58,8 +58,8 @@ extension OperatableState : OperationWrapper {
 
 // MARK: <~ Overrides
 
-public func <~<T: StateMachineConductor, S: StateType where T.SType: OperationWrapper, T.SType == OperatableState<S>>(left: T, right: T.SType.WrappedSType) {
-    left <~ OperatableState.State(right)
+public func <~|<T: StateMachineConductor, S: StateType where T.SType: OperationWrapper, T.SType == OperatableState<S>>(left: T, right: T.SType.WrappedSType) {
+    left <~| OperatableState.State(right)
 }
 
 // MARK: Custom string convertible

@@ -53,7 +53,7 @@ public class LazyStateMachineConductor<S: StateType, E: EventType> : StateMachin
 
 // MARK: <~ operator support
 
-public func <~<S: StateType, E: EventType>(left: LazyStateMachineConductor<S, E>, right: S) throws -> StateMachine<S, E> {
+public func <~|<S: StateType, E: EventType>(left: LazyStateMachineConductor<S, E>, right: S) throws -> StateMachine<S, E> {
     if case .None = left.initialState {
         try left._setInitialState(right)
     } else {

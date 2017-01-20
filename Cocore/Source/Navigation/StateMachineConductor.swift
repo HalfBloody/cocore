@@ -24,9 +24,9 @@ public protocol StateMachineConductor {
 
 // MARK: <~ (tryState) operator
 
-infix operator <~ { associativity left }
+infix operator <~| { associativity left }
 
-public func <~<T: StateMachineConductor>(left: T, right: T.SType) -> StateMachine<T.SType, T.EType> {
+public func <~|<T: StateMachineConductor>(left: T, right: T.SType) -> StateMachine<T.SType, T.EType> {
     return left.stateMachine <- right
 }
 

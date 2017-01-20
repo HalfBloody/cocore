@@ -125,7 +125,7 @@ public class OperationStateMachineConductor<T, E: ErrorType> : AbstractStateMach
             }
             
             // Push integrity error on state machine
-            self <~ .IntegrityError(.WrongConfiguration(errorDescription))
+            self <~| .IntegrityError(.WrongConfiguration(errorDescription))
         }
     }
 }
@@ -155,7 +155,7 @@ public class Operation<O, E: ErrorType> : OperationStateMachineConductor<O, E>, 
                 self <~! .Error(error)
             },
             interrupted: {
-                self <~ .IntegrityError(.InternalError)
+                self <~| .IntegrityError(.InternalError)
             },
             completed: {
                 self <~! .Complete

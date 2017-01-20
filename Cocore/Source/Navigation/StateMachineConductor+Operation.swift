@@ -71,7 +71,7 @@ extension StateMachineConductor where SType: OperationWrapper {
             }
         } else {
             operationHandler {
-                self <~ SType.wrap(self.stateMachine.state.unwrap())
+                self <~| SType.wrap(self.stateMachine.state.unwrap())
             }
         }
     }
@@ -85,7 +85,7 @@ extension StateMachineConductor where SType: OperationWrapper {
             }
         } else {
             operationHandler { _ in
-                self <~ SType.wrap(self.stateMachine.state.unwrap())
+                self <~| SType.wrap(self.stateMachine.state.unwrap())
             }
         }
     }
@@ -101,7 +101,7 @@ extension StateMachineConductor where SType: OperationWrapper {
             }
         } else {
             operationHandler {
-                self <~ SType.wrapOperation(operation, self.stateMachine.state.unwrap())
+                self <~| SType.wrapOperation(operation, self.stateMachine.state.unwrap())
             }
         }
     }
@@ -115,7 +115,7 @@ extension StateMachineConductor where SType: OperationWrapper {
             }
         } else {
             operationHandler { _ in
-                self <~ SType.wrapOperation(operation, self.stateMachine.state.unwrap())
+                self <~| SType.wrapOperation(operation, self.stateMachine.state.unwrap())
             }
         }
     }
@@ -127,16 +127,16 @@ extension StateMachineConductor where SType: OperationWrapper {
         do {
             
             guard let state = try handler(value) else {
-                self <~ wrapper(self.stateMachine.state.unwrap())
+                self <~| wrapper(self.stateMachine.state.unwrap())
                 return
             }
             
-            self <~ wrapper(state)
+            self <~| wrapper(state)
             
         } catch (OperationError.ProgramCancelled) {
             
             // Return to .State
-            self <~ SType.wrap(self.stateMachine.state.unwrap())
+            self <~| SType.wrap(self.stateMachine.state.unwrap())
             
             // Cancel operation
             operation.cancel()
