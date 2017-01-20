@@ -37,14 +37,14 @@ public class ZeroView : ModelConfigurableView {
         switch type {
             
             // Empty
-            case .Empty(let title, let text): 
-                zeroView = NSBundle.mainBundle().loadNibNamed("Zero_Empty", owner: nil, options: [:]).first as! ZeroView
+            case .Empty(let title, let text):
+                zeroView = NSBundle.loadCoreNibView("Zero_Empty")
                 zeroView.titleLabel?.text = title
                 zeroView.textLabel?.text = text               
             
             // Lock
             case .Lock(let title, let text, let boldText, let buttonTitle, let buttonHandler):
-                zeroView = NSBundle.mainBundle().loadNibNamed("Zero_Lock", owner: nil, options: [:]).first as! ZeroView
+                zeroView = NSBundle.loadCoreNibView("Zero_Lock")
                 zeroView.titleLabel?.text = title
                 zeroView.button?.setTitle(buttonTitle, forState: .Normal)
                 zeroView.buttonHandler = buttonHandler            

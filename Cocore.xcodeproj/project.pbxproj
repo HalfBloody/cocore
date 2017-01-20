@@ -27,6 +27,7 @@
 		B61759F81E2F76BA0030620C /* Zero_Lock.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E21E2F76BA0030620C /* Zero_Lock.xib */; };
 		B61759F91E2F76BA0030620C /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E41E2F76BA0030620C /* Web.xib */; };
 		B61759FA1E2F76BA0030620C /* TwoLineNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */; };
+		B66A4B041E31B187007DFAF6 /* NSBundle+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */; };
 		B67A35151E2C82240052549B /* Cocore.h in Headers */ = {isa = PBXBuildFile; fileRef = B67A35141E2C82240052549B /* Cocore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B67A351C1E2C82240052549B /* Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67A35111E2C82240052549B /* Cocore.framework */; };
 		B67A35211E2C82240052549B /* CocoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A35201E2C82240052549B /* CocoreTests.swift */; };
@@ -151,6 +152,7 @@
 		B61759E21E2F76BA0030620C /* Zero_Lock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Zero_Lock.xib; sourceTree = "<group>"; };
 		B61759E41E2F76BA0030620C /* Web.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Web.xib; sourceTree = "<group>"; };
 		B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLineNavigationView.xib; sourceTree = "<group>"; };
+		B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Utils.swift"; sourceTree = "<group>"; };
 		B67A35111E2C82240052549B /* Cocore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cocore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A35141E2C82240052549B /* Cocore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cocore.h; sourceTree = "<group>"; };
 		B67A35161E2C82240052549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				B67A36191E2CAC540052549B /* SystemLogger.swift */,
 				B67A361A1E2CAC540052549B /* UIDevice+Kind.swift */,
 				B67A361B1E2CAC540052549B /* UIWebView+UserAgent.swift */,
+				B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */,
 			);
 			name = Util;
 			path = Source/Util;
@@ -769,6 +772,7 @@
 				B67A36711E2CAC540052549B /* FacebookButton.swift in Sources */,
 				B67A366A1E2CAC540052549B /* StatusBarNotifier.swift in Sources */,
 				B67A36511E2CAC540052549B /* StateMachineConductor+Operation.swift in Sources */,
+				B66A4B041E31B187007DFAF6 /* NSBundle+Utils.swift in Sources */,
 				B67A36741E2CAC540052549B /* SnapshotView.swift in Sources */,
 				B67A36671E2CAC540052549B /* ImageUtils.swift in Sources */,
 				B67A36531E2CAC540052549B /* StateMachineConfigurator.swift in Sources */,

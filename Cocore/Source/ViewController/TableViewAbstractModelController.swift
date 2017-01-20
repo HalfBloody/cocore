@@ -40,12 +40,7 @@ public class TableViewAbstractModelController : UIViewController, UITableViewDat
     private var modelDataSources = [ AnyObject ]()
     private var modelDataSourceThunks = [ TableModelDataSourceThunk ]()
     private var modelViewDataSources = [ ModelViewDataSource ]()
-        
-    // Designated initializer
-    public init(nibName: String?) {
-        super.init(nibName: nibName, bundle: nil)        
-    }
-    
+
     ///
     
     public func addDataSource<T: TableModelDataSource where T.ModelType: AnyObject>(modelDataSource: T, modelViewDataSource: ModelViewDataSource) -> TableSection<T> {
@@ -72,6 +67,10 @@ public class TableViewAbstractModelController : UIViewController, UITableViewDat
     }
     
     //
+
+    public init(nibName nibName: String) {
+        super.init(nibName: nibName, bundle: NSBundle.bundleForNib(nibName))
+    }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

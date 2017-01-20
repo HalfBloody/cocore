@@ -33,16 +33,16 @@ public class ReusableModelViewDataSource : ModelViewDataSource {
     }
 
     // MARK: ----
-    
+
     public lazy var heightChange = [NSIndexPath: CGFloat]()
     
     public func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
         
         if case .None = nibCache[viewIdentifier] {
-            nibCache[viewIdentifier] = UINib(nibName: viewIdentifier, bundle: nil)
+            nibCache[viewIdentifier] = UINib.loadNib(viewIdentifier)
         }
         
-        return nibCache[viewIdentifier]!.instantiateWithOwner(nil, options: nil).first as! ModelConfigurableView
+        return nibCache[viewIdentifier]!.loadView()
     }
     
     public func decoratorForIndexPath(indexPath: NSIndexPath) -> Decorator {

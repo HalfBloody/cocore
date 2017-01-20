@@ -346,7 +346,7 @@ public class FormController<M: Object> : TableViewAbstractModelController, FormC
 
     public var originalTableInset: UIEdgeInsets?
     
-    public init(model: M, fields: [ FieldConfiguration<M, AnyObject> ], nibName: String?) {
+    public init(model: M, fields: [ FieldConfiguration<M, AnyObject> ], nibName: String) {
         
         // Create form fields
         formViewModelDataSource = try! FormFieldViewDataSource(fields)
@@ -360,7 +360,7 @@ public class FormController<M: Object> : TableViewAbstractModelController, FormC
             return viewIdentifiers.reverse()
         }.flatMap { $0 }        
         
-        super.init(nibName: nibName ?? "Form")
+        super.init(nibName: nibName)
 
         // Assign self as delegate
         delegate = self

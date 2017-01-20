@@ -26,7 +26,7 @@ public class TwoLineNavigationView : UIView {
     // MARK: Class
     
     class func instantiateFromNib() -> TwoLineNavigationView {
-        return NSBundle.mainBundle().loadNibNamed(String(TwoLineNavigationView.self), owner: nil, options: nil).first as! TwoLineNavigationView
+        return NSBundle.loadCoreNibView(String(TwoLineNavigationView.self))
     }    
     
 }

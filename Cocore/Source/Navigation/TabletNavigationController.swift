@@ -33,7 +33,7 @@ public class TabletNavigationController : UISplitViewController, CustomNavigatio
     }
     
     public init() {
-        super.init(nibName: nil, bundle: nil) // UISplitViewController's designated init
+        super.init(nibName: nil, bundle: NSBundle.coreBundle())
         
         // Max column width
         self.maximumPrimaryColumnWidth = CGFloat(MAXFLOAT)

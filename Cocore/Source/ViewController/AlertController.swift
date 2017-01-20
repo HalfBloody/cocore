@@ -81,14 +81,14 @@ public class AlertController : TableViewAbstractModelController {
         buttonTitles: [AlertButtonConfiguration], 
         cancelButtonTitle: String?, 
         dismissAllowed: Bool,
-        nibName: String?,
+        nibName: String,
         setupContentDataSources: (AlertController) -> ()) {
             
             // Header iamge
             self.headerImage = headerImage
             
-            super.init(nibName: nibName ?? "Alert")
-                        
+            super.init(nibName: nibName)
+
             // Header section
             let headerModel = AlertModel(headerImage: headerImage)
             let headerModelDataSource = DetailsTableModelDataSource(model: headerModel, 

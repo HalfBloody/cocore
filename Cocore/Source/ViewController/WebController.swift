@@ -29,8 +29,7 @@ public class WebController : UIViewController {
         // URL
         self.url = url
 
-        super.init(nibName: "Web",
-                   bundle: nil)
+        super.init(nibName: "Web", bundle: NSBundle.coreBundle())
         
         // Hide tab bar
         self.hidesBottomBarWhenPushed = true
