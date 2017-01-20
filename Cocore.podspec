@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.16"
+  s.version      = "0.0.17"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -107,12 +107,8 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  # s.resource  = "icon.png"
-  # s.resources = '"Cocore/Resources/Layout/*.{xib}", "Cocore/Resources/Screen/*.{xib}", "Cocore/Resources/View/*.{xib}"'
-
   s.resource_bundles = {
-    # 'Cocore' => [ 'Cocore/Resources/Layout/*.xib', 'Cocore/Resources/Screen/*.xib', 'Cocore/Resources/View/*.xib' ]
-    'Cocore' => [ 'Cocore/Resources/**/*.xib' ]
+    'Cocore' => [ 'Cocore/Resources/**/*.xib', 'Cocore/Resources/Assets.xcassets' ]
   }
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"

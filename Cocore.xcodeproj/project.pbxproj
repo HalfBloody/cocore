@@ -28,6 +28,7 @@
 		B61759F91E2F76BA0030620C /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E41E2F76BA0030620C /* Web.xib */; };
 		B61759FA1E2F76BA0030620C /* TwoLineNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */; };
 		B66A4B041E31B187007DFAF6 /* NSBundle+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */; };
+		B66A4B061E31CF7A007DFAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */; };
 		B67A35151E2C82240052549B /* Cocore.h in Headers */ = {isa = PBXBuildFile; fileRef = B67A35141E2C82240052549B /* Cocore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B67A351C1E2C82240052549B /* Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67A35111E2C82240052549B /* Cocore.framework */; };
 		B67A35211E2C82240052549B /* CocoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A35201E2C82240052549B /* CocoreTests.swift */; };
@@ -153,6 +154,7 @@
 		B61759E41E2F76BA0030620C /* Web.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Web.xib; sourceTree = "<group>"; };
 		B61759E61E2F76BA0030620C /* TwoLineNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLineNavigationView.xib; sourceTree = "<group>"; };
 		B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Utils.swift"; sourceTree = "<group>"; };
+		B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		B67A35111E2C82240052549B /* Cocore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cocore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A35141E2C82240052549B /* Cocore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cocore.h; sourceTree = "<group>"; };
 		B67A35161E2C82240052549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				B61759D01E2F76BA0030620C /* Layout */,
 				B61759E31E2F76BA0030620C /* Screen */,
 				B61759E51E2F76BA0030620C /* View */,
+				B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */,
 			);
 			name = Resouces;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				B61759E91E2F76BA0030620C /* Alert_CancelButton.xib in Resources */,
 				B61759EE1E2F76BA0030620C /* FormField_Multiline.xib in Resources */,
 				B61759F01E2F76BA0030620C /* FormField_SelectionImage.xib in Resources */,
+				B66A4B061E31CF7A007DFAF6 /* Assets.xcassets in Resources */,
 				B61759F71E2F76BA0030620C /* Zero_Empty.xib in Resources */,
 				B61759F21E2F76BA0030620C /* FormField_SinglelineCompact.xib in Resources */,
 				B61759EA1E2F76BA0030620C /* Alert_FacebookButton.xib in Resources */,
