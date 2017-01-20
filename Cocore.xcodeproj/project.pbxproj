@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B61759E71E2F76BA0030620C /* Alert_Button.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759D11E2F76BA0030620C /* Alert_Button.xib */; };
-		B61759E81E2F76BA0030620C /* Alert_ButtonAccent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759D21E2F76BA0030620C /* Alert_ButtonAccent.xib */; };
 		B61759E91E2F76BA0030620C /* Alert_CancelButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759D31E2F76BA0030620C /* Alert_CancelButton.xib */; };
 		B61759EA1E2F76BA0030620C /* Alert_FacebookButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759D41E2F76BA0030620C /* Alert_FacebookButton.xib */; };
 		B61759EB1E2F76BA0030620C /* Alert_GrayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = B61759D51E2F76BA0030620C /* Alert_GrayButton.xib */; };
@@ -134,7 +133,6 @@
 		1B7BC4E256EBAB13C7395DD4 /* Pods-Cocore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cocore/Pods-Cocore.debug.xcconfig"; sourceTree = "<group>"; };
 		5BE046FA86A2FC6624513F74 /* Pods-Cocore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cocore/Pods-Cocore.release.xcconfig"; sourceTree = "<group>"; };
 		B61759D11E2F76BA0030620C /* Alert_Button.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Alert_Button.xib; sourceTree = "<group>"; };
-		B61759D21E2F76BA0030620C /* Alert_ButtonAccent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Alert_ButtonAccent.xib; sourceTree = "<group>"; };
 		B61759D31E2F76BA0030620C /* Alert_CancelButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Alert_CancelButton.xib; sourceTree = "<group>"; };
 		B61759D41E2F76BA0030620C /* Alert_FacebookButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Alert_FacebookButton.xib; sourceTree = "<group>"; };
 		B61759D51E2F76BA0030620C /* Alert_GrayButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Alert_GrayButton.xib; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				B61759D11E2F76BA0030620C /* Alert_Button.xib */,
-				B61759D21E2F76BA0030620C /* Alert_ButtonAccent.xib */,
 				B61759D31E2F76BA0030620C /* Alert_CancelButton.xib */,
 				B61759D41E2F76BA0030620C /* Alert_FacebookButton.xib */,
 				B61759D51E2F76BA0030620C /* Alert_GrayButton.xib */,
@@ -696,7 +693,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B61759E81E2F76BA0030620C /* Alert_ButtonAccent.xib in Resources */,
 				B61759E91E2F76BA0030620C /* Alert_CancelButton.xib in Resources */,
 				B61759EE1E2F76BA0030620C /* FormField_Multiline.xib in Resources */,
 				B61759F01E2F76BA0030620C /* FormField_SelectionImage.xib in Resources */,

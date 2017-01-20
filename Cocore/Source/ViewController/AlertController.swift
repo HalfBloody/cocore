@@ -59,7 +59,7 @@ public class AlertController : TableViewAbstractModelController {
     public enum AlertItem: String {
         case Margin = "Alert_Margin"
         case Button = "Alert_Button"
-        case ButtonAccent = "Alert_ButtonAccent"
+        case ButtonSurveyQuestion = "Alert_SurveyQuestionButton"
         case PurpleButton = "Alert_PurpleButton"
         case GrayButton = "Alert_GrayButton"
         case FacebookButton = "Alert_FacebookButton"
