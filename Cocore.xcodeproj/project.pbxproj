@@ -29,6 +29,7 @@
 		B66A4B041E31B187007DFAF6 /* NSBundle+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */; };
 		B66A4B061E31CF7A007DFAF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */; };
 		B66A4B0E1E31F473007DFAF6 /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */; };
+		B66A4B101E31FBD2007DFAF6 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66A4B0F1E31FBD2007DFAF6 /* UserDefaults.swift */; };
 		B67A35151E2C82240052549B /* Cocore.h in Headers */ = {isa = PBXBuildFile; fileRef = B67A35141E2C82240052549B /* Cocore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B67A351C1E2C82240052549B /* Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67A35111E2C82240052549B /* Cocore.framework */; };
 		B67A35211E2C82240052549B /* CocoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A35201E2C82240052549B /* CocoreTests.swift */; };
@@ -155,6 +156,7 @@
 		B66A4B031E31B187007DFAF6 /* NSBundle+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Utils.swift"; sourceTree = "<group>"; };
 		B66A4B051E31CF7A007DFAF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationSettings.swift; path = Source/Helper/ApplicationSettings.swift; sourceTree = "<group>"; };
+		B66A4B0F1E31FBD2007DFAF6 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Source/Helper/UserDefaults.swift; sourceTree = "<group>"; };
 		B67A35111E2C82240052549B /* Cocore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cocore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A35141E2C82240052549B /* Cocore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cocore.h; sourceTree = "<group>"; };
 		B67A35161E2C82240052549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				B66A4B0D1E31F473007DFAF6 /* ApplicationSettings.swift */,
+				B66A4B0F1E31FBD2007DFAF6 /* UserDefaults.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				B67A36601E2CAC540052549B /* PopFadeAnimator.swift in Sources */,
 				B67A36551E2CAC540052549B /* TabletNavigationController.swift in Sources */,
 				B67A364F1E2CAC540052549B /* OperationState.swift in Sources */,
+				B66A4B101E31FBD2007DFAF6 /* UserDefaults.swift in Sources */,
 				B67A36541E2CAC540052549B /* StateMachineDelegate.swift in Sources */,
 				B67A36341E2CAC540052549B /* DetailsTableModelDataSource.swift in Sources */,
 				B67A363D1E2CAC540052549B /* AlertView.swift in Sources */,
