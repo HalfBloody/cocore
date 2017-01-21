@@ -1,9 +1,9 @@
 //
-//  ContactInfoController.swift
+//  WebController.swift
 //  PrizeArena
 //
 //  Created by Dmitry Shashlov on 24/02/16.
-//  Copyright © 2016 Half Bloody. All rights reserved.
+//  Copyright © 2017 Dmitry Shashlov. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 //
-//  AppDelegate.swift
-//  PocketFlip
+//  StatusBarNotifier.swift
+//  Cocore
 //
 //  Created by Dmitry Shashlov on 28/03/16.
-//  Copyright © 2016 Dmitry Shashlov. All rights reserved.
+//  Copyright © 2017 Dmitry Shashlov. All rights reserved.
 //
 
 import UIKit

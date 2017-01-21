@@ -1,9 +1,9 @@
 //
-//  DeviceKind.swift
+//  UIDevice+Kind.swift
 //  PrizeArena
 //
 //  Created by Jens Disselhoff on 11/01/16.
-//  Copyright © 2016 Half Bloody. All rights reserved.
+//  Copyright © 2017 Dmitry Shashlov. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 //
-//  CustomButton.swift
+//  PurpleButton.swift
 //  PrizeArena
 //
 //  Created by Dmitry Shashlov on 18/02/16.
-//  Copyright © 2016 Half Bloody. All rights reserved.
+//  Copyright © 2017 Dmitry Shashlov. All rights reserved.
 //
 
 import Foundation

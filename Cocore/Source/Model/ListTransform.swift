@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  ListTransform.swift
 //  PrizeArena
 //
 //  Created by Jens Disselhoff on 04/12/15.

@@ -1,9 +1,9 @@
 //
 //  Logger.swift
-//  PocketFlip
+//  Cocore
 //
 //  Created by Dmitry Shashlov on 7/30/16.
-//  Copyright © 2016 Dmitry Shashlov. All rights reserved.
+//  Copyright © 2017 Dmitry Shashlov. All rights reserved.
 //
 
 import Foundation
