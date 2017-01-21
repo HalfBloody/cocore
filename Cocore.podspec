@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.23"
+  s.version      = "0.0.24"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.
@@ -142,62 +142,86 @@ Pod::Spec.new do |s|
   s.resource = "Cocore/Vendor/Crashlytics.framework", "Cocore/Vendor/Fabric.framework", "Cocore/Vendor/OneSignal.framework", "Cocore/Vendor/UXCam.framework"
   s.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor"', 'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/Cocore/Cocore/Vendor/Crashlytics.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/Fabric.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/OneSignal.framework/Headers", "$(PODS_ROOT)/Cocore/Cocore/Vendor/UXCam.framework/Headers"'}
 
+  # Defaults subspecs
+  # s.default_subspecs = 'Core', 'Navigation', 'Logging'
+  s.default_subspecs = 'Core', 'Navigation', 'Logging', 'UINotifications', 'HTMLUtils'
+
+  # Default subspecs
+  ###################################################################
+  
   # Main application core
-  #   > Cocore
-  
-  s.dependency 'Alamofire', '3.1.4'
-  s.dependency 'RealmSwift', '0.98.6'
-  s.dependency 'ReactiveCocoa', '4.0.4-alpha-4'
-  s.dependency 'ObjectMapper', '1.1.1'
-  s.dependency 'AlamofireObjectMapper', '2.1.0'
-  
-  s.dependency 'Reachability'
-  s.dependency 'DeepLinkKit'
-  s.dependency 'Helpshift', '5.8.0'
-  
-  # Sentry client
-  s.dependency 'Raven'
+  #   > Cocore/Core
+  s.subspec 'Core' do |ss|
+    ss.dependency 'Alamofire', '3.1.4'
+    ss.dependency 'RealmSwift', '0.98.6'
+    ss.dependency 'ReactiveCocoa', '4.0.4-alpha-4'
+    ss.dependency 'ObjectMapper', '1.1.1'
+    ss.dependency 'AlamofireObjectMapper', '2.1.0'
+    ss.dependency 'Reachability'
+    ss.dependency 'DeepLinkKit'
+  end
   
   # State machine (own GitHub fork with updates)
-  #   > Cocore/StateMachine
-  s.dependency 'SwiftState', '4.1.1'
+  #   > Cocore/Navigation
+  s.subspec 'Navigation' do |ss|
+    ss.dependency 'SwiftState', '4.1.0-cocore'
+  end
+
+  # Logging
+  #   > Cocore/Logging
+  s.subspec 'Logging' do |ss|
+    ss.dependency 'CocoaLumberjack/Swift', '~> 2.2.0'
+    ss.dependency 'PaperTrailLumberjack', '2.0.0-cocore'
+    ss.dependency 'CocoaAsyncSocket', '7.4.3'
+    ss.dependency 'Raven'
+  end
   
-  # Used in TaskListController.swift
-  #   > Cocore/CustomSegmentedControl
-  # pod 'NPSegmentedControl'
+  # Optional subspecs
+  ###################################################################
   
   # Used in TaskService.swift and LocalTaskPerformController.swift
-  #   > Cocore/CloudStore/Cloudinary
-  # pod 'Cloudinary'
+  #   > Cocore/Cloudinary
+  s.subspec 'Cloudinary' do |ss|
+    ss.dependency 'Cloudinary'
+  end
   
   # Modal onscreen progress notifier 
-  #   > Cocore/ProgressNotifier
-  s.dependency 'ARSLineProgress', '1.2.2'
-  
-  # Used in StatusBarNotifier.swift
-  #   > Cocore/StatusBarNotifier
-  s.dependency 'JDStatusBarNotification', '1.5.4'
+  #   > Cocore/UINotifications
+  s.subspec 'UINotifications' do |ss|
+
+    ss.dependency 'ARSLineProgress', '1.2.1-cocore'
+    
+    # Used in StatusBarNotifier.swift
+    ss.dependency 'JDStatusBarNotification', '1.5.4'
+
+  end
   
   # Used in StrintUtils.swift for rendering HTML inside UILabel
   #   > Cocore/HTMLUtils
-  s.dependency 'TTTAttributedLabel'
-  
-  # Logging
-  #   > Cocore/Logging
-  s.dependency 'CocoaLumberjack/Swift', '~> 2.2.0'
-  s.dependency 'PaperTrailLumberjack', '2.0.3'
-  s.dependency 'CocoaAsyncSocket', '7.4.3'
+  s.subspec 'HTMLUtils' do |ss|
+    ss.dependency 'TTTAttributedLabel'
+  end
   
   # Used for TwitterAuthorization
   #   > Cocore/OAuth
-  # pod 'OAuthSwift', '0.6.0'
-  # pod 'OAuthSwift-Alamofire', :git => 'git@github.com:OAuthSwift/OAuthSwift-Alamofire.git', :tag => '0.0.2'
+  s.subspec 'OAuth' do |ss|
+    ss.dependency 'OAuthSwift-Alamofire', '0.0.2-cocore'
+  end
   
   # Used in ViewModels
   #   > Cocore/TimeUtils
-  # pod 'DateTools'
-  
-  # Used for NSTimer.after(..) calls, mostly for navigation
-  s.dependency 'SwiftyTimer', '1.4.1'
+  s.subspec 'TimeUtils' do |ss| 
+
+    ss.dependency 'DateTools'
+    
+    # Used for NSTimer.after(..) calls, mostly for navigation
+    ss.dependency 'SwiftyTimer', '1.4.1'
+
+  end
+
+  #   > Cocore/FAQ
+  s.subspec 'FAQ' do |ss|
+    ss.dependency 'Helpshift', '5.8.0'
+  end
 
 end
