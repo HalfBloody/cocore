@@ -12,8 +12,8 @@ import CocoaLumberjack
 
 // MARK: Crashlytics logger
 
-class CrashlyticsLogger : DDAbstractLogger {
-    override func logMessage(logMessage: DDLogMessage!) {
+public class CrashlyticsLogger : DDAbstractLogger {
+    override public func logMessage(logMessage: DDLogMessage!) {
         CLSLogv("%@ %@ %@", getVaList([
             logMessage.level.description.uppercaseString,
             LogContext(rawValue: logMessage.context)!.description,
