@@ -42,9 +42,11 @@ extension String {
             }
             
             let result = try NSAttributedString(data: attributedStringData,
-                                                options: [ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType ],
-                                                documentAttributes: nil)
-            
+                                                options: [
+                                                    NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
+                                                    NSCharacterEncodingDocumentAttribute : NSUTF8StringEncoding
+                                                ], documentAttributes: nil)
+
             return result
         } catch (_) {
             return nil
