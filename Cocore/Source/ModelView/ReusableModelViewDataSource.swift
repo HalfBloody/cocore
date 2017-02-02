@@ -9,23 +9,6 @@
 import Foundation
 import UIKit
 
-public class StaticHeightReusableModelViewDataSource : ReusableModelViewDataSource {
-    
-    public var configurableViewDummy: ModelConfigurableView?
-    
-    override public func viewModelConfigurableForViewIdentifier(viewIdentifier: String, indexPath: NSIndexPath) -> ModelConfigurableView {
-        let vmc = super.viewModelConfigurableForViewIdentifier(viewIdentifier, indexPath: indexPath)
-        if case .None = configurableViewDummy {
-            configurableViewDummy = vmc
-        }
-        return vmc
-    }
-    
-    override public func heightChange(indexPath: NSIndexPath) -> CGFloat {
-        return 0.0
-    }
-}
-
 public class ReusableModelViewDataSource : ModelViewDataSource {
 
     public init() {

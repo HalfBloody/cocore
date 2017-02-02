@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.name         = "Cocore"
-  s.version      = "0.0.27"
+  s.version      = "0.0.28"
   s.summary      = "A short description of Cocore."
 
   # This description is used to generate tags and improve search results.

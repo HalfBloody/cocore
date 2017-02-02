@@ -117,6 +117,7 @@
 		B67A36871E2CBEC70052549B /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36851E2CBEC70052549B /* FontSizes.swift */; };
 		B67A368B1E2CBF7F0052549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A368A1E2CBF7F0052549B /* AppDelegate.swift */; };
 		B67A36921E2DC7B30052549B /* Logger+Crashlytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A36911E2DC7B30052549B /* Logger+Crashlytics.swift */; };
+		B6E587DC1E4313FC00EEE75F /* StaticHeightConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E587DB1E4313FC00EEE75F /* StaticHeightConfigurable.swift */; };
 		BFD3ACCBF3E670B12263272B /* Pods_Cocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1426EAC7DD532A19ED91D0F4 /* Pods_Cocore.framework */; };
 /* End PBXBuildFile section */
 
@@ -247,6 +248,7 @@
 		B67A36851E2CBEC70052549B /* FontSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
 		B67A368A1E2CBF7F0052549B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate/AppDelegate.swift; sourceTree = "<group>"; };
 		B67A36911E2DC7B30052549B /* Logger+Crashlytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Logger+Crashlytics.swift"; path = "Source/Crashlytics/Logger+Crashlytics.swift"; sourceTree = "<group>"; };
+		B6E587DB1E4313FC00EEE75F /* StaticHeightConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticHeightConfigurable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +463,7 @@
 				B67A35E81E2CAC540052549B /* ModelConfigurableView.swift */,
 				B67A35E91E2CAC540052549B /* ModelViewDataSource.swift */,
 				B67A35EA1E2CAC540052549B /* ReusableModelViewDataSource.swift */,
+				B6E587DB1E4313FC00EEE75F /* StaticHeightConfigurable.swift */,
 			);
 			name = ModelView;
 			path = Source/ModelView;
@@ -852,6 +855,7 @@
 				B67A36651E2CAC540052549B /* ActionHandlers.swift in Sources */,
 				B67A367D1E2CAC540052549B /* RootViewController.swift in Sources */,
 				B67A36611E2CAC540052549B /* PushFadeAnimator.swift in Sources */,
+				B6E587DC1E4313FC00EEE75F /* StaticHeightConfigurable.swift in Sources */,
 				B67A36801E2CAC540052549B /* AlertViewModel.swift in Sources */,
 				B67A36461E2CAC540052549B /* LazyStateMachineConductor.swift in Sources */,
 				B67A36921E2DC7B30052549B /* Logger+Crashlytics.swift in Sources */,

@@ -158,7 +158,7 @@ public class TableViewAbstractModelController : UIViewController, UITableViewDat
             
             case (let decoratedCell as DecoratedTableViewCell, is StaticHeightReusableModelViewDataSource):
                 setupDecoratedCell(decoratedCell, indexPath: indexPath)
-            
+
             default:
                 break
         }
@@ -173,7 +173,7 @@ public class TableViewAbstractModelController : UIViewController, UITableViewDat
         
         // Height change offset
         switch modelViewDataSourceForIndexPath(indexPath) {
-            case let staticHeightDataSource as StaticHeightReusableModelViewDataSource:
+            case let staticHeightDataSource as StaticHeightConfigurable:
                 totalHeight = staticHeightDataSource.configurableViewDummy?.frame.size.height ?? viewModelConfigurableForIndexPath(indexPath).frame.size.height
             case let reusableDataSource as ReusableModelViewDataSource:
                 totalHeight = viewModelConfigurableForIndexPath(indexPath).frame.size.height + (reusableDataSource.heightChange(indexPath) ?? 0.0)
@@ -254,7 +254,7 @@ public class TableViewAbstractModelController : UIViewController, UITableViewDat
                 // Height is not changeable
                 case (is StaticHeightReusableModelViewDataSource, _):
                     break
-                    
+
                 case (_, .None):
                     
                     let multilineLabels = modelConfigurableView.multilineLabels()
