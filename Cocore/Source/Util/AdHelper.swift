@@ -11,16 +11,48 @@ import AdSupport
 
 public class AdHelper {
 
-    public static var advertisingTrackingEnabled: Bool {
+    // MARK: Public
+
+    public static var adTrackingEnabled: Bool? {
         get {
-            return ASIdentifierManager.sharedManager().advertisingTrackingEnabled
+            return _getAdManagerSafe()?.advertisingTrackingEnabled
         }
     }
 
-    public static var advertisingIdentifier: String {
+    public static var adIdentifier: NSUUID? {
         get {
-            return ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDString
+            return _getAdIdentifierSafe()
         }
     }
 
+    // MARK: Private
+
+    private static func _getAdManagerSafe() -> ASIdentifierManager? {
+
+        let message = "Advertisement manager cannot be determined"
+
+        guard let adManager = ASIdentifierManager.sharedManager() else {
+            DDLogError("\(message): `ASIdentifierManager.sharedManager()` is nil")
+            return nil
+        }
+
+        return adManager
+    }
+
+    private static func _getAdIdentifierSafe() -> NSUUID? {
+
+        let message = "Advertisement identifier cannot be determined"
+
+        // If manager is nil then identifier would also be nil, error logged from _getAdManagerSafe()
+        guard let adManager = _getAdManagerSafe() else {
+            return nil
+        }
+
+        guard let adIdentifier = adManager.advertisingIdentifier else {
+            DDLogError("\(message): `ASIdentifierManager.sharedManager().advertisingIdentifier` is nil")
+            return nil
+        }
+
+        return adIdentifier
+    }
 }
